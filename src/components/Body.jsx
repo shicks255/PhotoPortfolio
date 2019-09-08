@@ -1,21 +1,19 @@
 import React from 'react';
+import PhotoBox from './PhotoBox'
 
 export default class Body extends React.Component {
 
     constructor(props)
     {
         super(props);
+        this.state = {
+            photos: []
+        }
+        this.getAllPhotos()
     }
 
     getAllPhotos()
     {
-
-    }
-
-    componentDidMount()
-    {
-        console.log("hi");
-
         let request = fetch("/image");
         request
             .then(
@@ -28,11 +26,28 @@ export default class Body extends React.Component {
         );
     }
 
+    componentDidMount()
+    {
+
+    }
+
     render()
     {
+
+        console.log(this.state);
+
+        // if ('photos' in this.state) {
+        //
+            let pics = this.state.photos.map(x => {
+                return <PhotoBox photo={x}></PhotoBox>
+            })
+        // }
+
         return (
             <div>
 
+
+                {pics}
                 this is the body
 
             </div>
