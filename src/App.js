@@ -1,15 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import Body from './components/Body';
+//import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-
-        Hello
-
+          My Photography Site
       </header>
+
+        <div>
+            <Body>
+
+            </Body>
+        </div>
+
+        <footer>
+            Footer
+        </footer>
+
     </div>
   );
 }
