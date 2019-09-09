@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import Body from './components/Body';
+import 'bootstrap/dist/css/bootstrap.min.css'
 //import './App.css';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
           My Photography Site
       </header>
 
-        <div>
+        <div className={'container'}>
             <Body>
 
             </Body>

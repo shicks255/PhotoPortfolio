@@ -36,20 +36,13 @@ export default class Body extends React.Component {
 
         console.log(this.state);
 
-        // if ('photos' in this.state) {
-        //
-            let pics = this.state.photos.map(x => {
-                return <PhotoBox photo={x}></PhotoBox>
-            })
-        // }
+        let pics = this.state.photos.map(x => {
+            return <PhotoBox photo={x}></PhotoBox>
+        })
 
         return (
-            <div>
-
-
+            <div className={'row'}>
                 {pics}
-                this is the body
-
             </div>
         )
     }
