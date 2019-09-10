@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import Body from './components/Body';
-import 'bootstrap/dist/css/bootstrap.min.css'
-//import './App.css';
+// import 'jquery/dist/jquery';
+// import 'popper.js/dist/popper';
+// import 'bootstrap/dist/js/bootstrap.min';
 
 function App() {
   return (

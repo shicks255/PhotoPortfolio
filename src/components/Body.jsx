@@ -1,6 +1,6 @@
 import React from 'react';
-import PhotoBox from './PhotoBox'
-
+import PhotoBox from './PhotoBox';
+import $ from 'jquery/dist/jquery';
 export default class Body extends React.Component {
 
     constructor(props)
@@ -10,6 +10,14 @@ export default class Body extends React.Component {
             photos: []
         }
         this.getAllPhotos()
+
+        this.doModal = this.doModal.bind(this);
+    }
+
+    doModal()
+    {
+        let m = $( '.modal' );
+        m.modal('toggle');
     }
 
     getAllPhotos()
@@ -41,8 +49,24 @@ export default class Body extends React.Component {
         })
 
         return (
-            <div className={'row'}>
-                {pics}
+            <div>
+                <div className={'modal'} tabIndex={'-1'} role={'dialog'}>
+                    <div className={'modal-dialog'} role={'document'}>
+                        <div className={'modal-content'}>
+                            <div className={'modal-header'}>
+                                yes
+                            </div>
+                            <div className={'modal-body'}>
+                                hiii
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onClick={this.doModal}>Modal</button>
+                <div className={'row'}>
+                    {pics}
+                </div>
             </div>
         )
     }
