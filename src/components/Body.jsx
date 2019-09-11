@@ -14,7 +14,7 @@ export default class Body extends React.Component {
         this.doModal = this.doModal.bind(this);
     }
 
-    doModal()
+    doModal(fileName)
     {
         let m = $( '.modal' );
         m.modal('toggle');
@@ -41,23 +41,20 @@ export default class Body extends React.Component {
 
     render()
     {
-
-        console.log(this.state);
-
         let pics = this.state.photos.map(x => {
-            return <PhotoBox photo={x}></PhotoBox>
+            return <PhotoBox onClick={(event) => this.doModal(event)} photo={x}></PhotoBox>
         })
 
         return (
             <div>
-                <div className={'modal'} tabIndex={'-1'} role={'dialog'}>
-                    <div className={'modal-dialog'} role={'document'}>
+                <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} role={'dialog'}>
+                    <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
                         <div className={'modal-content'}>
-                            <div className={'modal-header'}>
-                                yes
-                            </div>
                             <div className={'modal-body'}>
-                                hiii
+                                <img width={'100%'} src={'/image//bottles.jpg'} />
+                            </div>
+                            <div className={'modal-footer'}>
+                                sdf
                             </div>
                         </div>
                     </div>

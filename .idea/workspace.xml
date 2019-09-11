@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="init pro">
-      <change afterPath="$PROJECT_DIR$/src/components/PhotoBox.jsx" afterDir="false" />
+    <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Body.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Body.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PhotoBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PhotoBox.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,6 +120,16 @@
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="npm start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -129,6 +140,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
     <option name="projectSyncType">
@@ -144,7 +160,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567740263320</updated>
-      <workItem from="1567740266569" duration="10107000" />
+      <workItem from="1567740266569" duration="39866000" />
     </task>
     <task id="LOCAL-00001" summary="working on photo service">
       <created>1567906476729</created>
@@ -153,7 +169,35 @@
       <option name="project" value="LOCAL" />
       <updated>1567906476729</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="more stuff">
+      <created>1567916932637</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1567916932637</updated>
+    </task>
+    <task id="LOCAL-00003" summary="adding the photo information to each photobox">
+      <created>1567963685577</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1567963685577</updated>
+    </task>
+    <task id="LOCAL-00004" summary="adding the photo information to each photobox">
+      <created>1568001028746</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568001028746</updated>
+    </task>
+    <task id="LOCAL-00005" summary="adding some front end UI stuff">
+      <created>1568085328165</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1568085328165</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,20 +216,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="working on photo service" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on photo service" />
+    <MESSAGE value="more stuff" />
+    <MESSAGE value="adding the photo information to each photobox" />
+    <MESSAGE value="adding some front end UI stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding some front end UI stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>6</line>
+          <line>8</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>8</line>
+          <line>10</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
