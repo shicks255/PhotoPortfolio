@@ -16,6 +16,8 @@ export default class Body extends React.Component {
 
     doModal(fileName)
     {
+        console.log(fileName);
+        let modalImage = $( '#modalImage' ).attr('src', `/image/${fileName}`);
         let m = $( '.modal' );
         m.modal('toggle');
     }
@@ -42,7 +44,7 @@ export default class Body extends React.Component {
     render()
     {
         let pics = this.state.photos.map(x => {
-            return <PhotoBox onClick={(event) => this.doModal(event)} photo={x}></PhotoBox>
+            return <PhotoBox clickFunction={this.doModal} photo={x}></PhotoBox>
         })
 
         return (
@@ -51,7 +53,7 @@ export default class Body extends React.Component {
                     <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
                         <div className={'modal-content'}>
                             <div className={'modal-body'}>
-                                <img width={'100%'} src={'/image//bottles.jpg'} />
+                                <img id={'modalImage'} width={'100%'} src={''} />
                             </div>
                             <div className={'modal-footer'}>
                                 sdf

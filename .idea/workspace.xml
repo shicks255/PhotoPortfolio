@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Body.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Body.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PhotoBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PhotoBox.jsx" afterDir="false" />
     </list>
@@ -160,7 +159,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567740263320</updated>
-      <workItem from="1567740266569" duration="39866000" />
+      <workItem from="1567740266569" duration="44452000" />
     </task>
     <task id="LOCAL-00001" summary="working on photo service">
       <created>1567906476729</created>
@@ -197,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568085328165</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="working on stuff">
+      <created>1568173851306</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1568173851306</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +225,8 @@
     <MESSAGE value="more stuff" />
     <MESSAGE value="adding the photo information to each photobox" />
     <MESSAGE value="adding some front end UI stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding some front end UI stuff" />
+    <MESSAGE value="working on stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
