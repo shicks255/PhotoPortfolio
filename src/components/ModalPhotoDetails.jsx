@@ -6,7 +6,7 @@ export default function ModalPhotoDetails(props)
 
     if (props.modalPhoto) {
         let dateTaken = new Date(props.modalPhoto.taken);
-        let dateAdded = new Date(props.modalPhoto.added);
+        let dateAdded = new Date(props.modalPhoto.addedOn);
         content =
             <div>
                 <table>
@@ -25,8 +25,8 @@ export default function ModalPhotoDetails(props)
                         <td colSpan={2}><b>Lens:</b> {props.modalPhoto.lensModel}</td>
                     </tr>
                     <tr>
-                        <td><b>Added:</b> {dateAdded.toDateString()}</td>
-                        <td><b>Date taken:</b> {dateTaken.toLocaleDateString()}</td>
+                        <td><b>Added:</b> {dateAdded.toLocaleDateString()} {dateAdded.toLocaleTimeString()}</td>
+                        <td><b>Date taken:</b> {dateTaken.toLocaleDateString()} {dateTaken.toLocaleTimeString()}</td>
                     </tr>
 
                 </table>
