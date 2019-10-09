@@ -18,7 +18,9 @@ export default class Body extends React.Component {
 
     doModal(photo)
     {
-        $( '#modalImage' ).attr('src', `/image/${photo.fileName}`);
+        $( '#modalImage' )
+            .attr('src', `/image/${photo.fileName}`)
+            .attr('alt', photo.name);
 
         this.setState({modalPhoto: photo})
 
@@ -46,7 +48,7 @@ export default class Body extends React.Component {
     render()
     {
         let pics = this.state.photos.map(x => {
-            return <PhotoBox clickFunction={this.doModal} photo={x}></PhotoBox>
+            return <PhotoBox key={x.fileName} clickFunction={this.doModal} photo={x}></PhotoBox>
         })
 
         return (
@@ -55,7 +57,7 @@ export default class Body extends React.Component {
                     <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
                         <div className={'modal-content'}>
                             <div className={'modal-body'}>
-                                <img id={'modalImage'} width={'100%'} src={''} />
+                                <img id={'modalImage'} alt={''} width={'100%'} src={''} />
                             </div>
                             <div className={'modal-footer'}>
                                 <ModalPhotoDetails modalPhoto={this.state.modalPhoto} />
@@ -64,7 +66,7 @@ export default class Body extends React.Component {
                     </div>
                 </div>
 
-                <div className={'row'}>
+                <div className={'row'} style={{marginBottom: "5px"}}>
                     {pics}
                 </div>
             </div>

@@ -1,9 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import Body from './components/Body';
-// import 'jquery/dist/jquery';
-// import 'popper.js/dist/popper';
-// import 'bootstrap/dist/js/bootstrap.min';
 
 function App() {
   return (
@@ -13,9 +9,7 @@ function App() {
       </header>
 
         <div className={'container'}>
-            <Body>
-
-            </Body>
+            <Body/>
         </div>
 
         <footer>

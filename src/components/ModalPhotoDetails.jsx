@@ -10,6 +10,7 @@ export default function ModalPhotoDetails(props)
         content =
             <div>
                 <table>
+                    <tbody>
                     <tr>
                         <td colSpan={2}>{props.modalPhoto.description}</td>
                     </tr>
@@ -25,10 +26,10 @@ export default function ModalPhotoDetails(props)
                         <td colSpan={2}><b>Lens:</b> {props.modalPhoto.lensModel}</td>
                     </tr>
                     <tr>
-                        <td><b>Added:</b> {dateAdded.toLocaleDateString()} {dateAdded.toLocaleTimeString()}</td>
-                        <td><b>Date taken:</b> {dateTaken.toLocaleDateString()} {dateTaken.toLocaleTimeString()}</td>
+                        <td><b>Added:</b> {dateAdded.toDateString()} {dateAdded.toLocaleTimeString()}</td>
+                        <td><b>Date taken:</b> {dateTaken.toDateString()} {dateTaken.toLocaleTimeString()}</td>
                     </tr>
-
+                    </tbody>
                 </table>
             </div>
     }
