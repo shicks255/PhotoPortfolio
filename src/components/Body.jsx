@@ -53,7 +53,7 @@ export default class Body extends React.Component {
 
         return (
             <div>
-                <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} role={'dialog'}>
+                <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} style={{paddingRight: "0"}} role={'dialog'}>
                     <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
                         <div className={'modal-content'}>
                             <div className={'modal-body'}>
