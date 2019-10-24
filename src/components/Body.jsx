@@ -13,6 +13,20 @@ export default class Body extends React.Component {
         this.getAllPhotos()
 
         this.doModal = this.doModal.bind(this);
+        this.carouselLeft = this.carouselLeft.bind(this);
+        this.carouselRight = this.carouselRight.bind(this);
+    }
+
+    carouselLeft(currentIndex) {
+        console.log(currentIndex);
+        this.setState({modalPhoto: this.state.photos.find((t) => t.number = currentIndex-1)})
+        // this.doModal(this.state.modalPhoto);
+    }
+
+    carouselRight(currentIndex) {
+        console.log(currentIndex);
+        this.setState({modalPhoto: this.state.photos.find((t) => t.number = currentIndex+1)})
+        // this.doModal(this.state.modalPhoto);
     }
 
     doModal(photo) {
@@ -32,13 +46,15 @@ export default class Body extends React.Component {
                 res => res.json()
             )
             .then(
-                fulfill => this.setState({ photos: fulfill }),
+                photos => photos.map((t,i) => {
+                    t.num = i;
+                    return t;
+                })
+            )
+            .then(
+                photos => this.setState({ photos: photos }),
                 error => { }
             );
-    }
-
-    componentDidMount() {
-
     }
 
     render() {
@@ -57,13 +73,13 @@ export default class Body extends React.Component {
                                         <img id={'modalImage'} alt={''} width={'100%'} src={''} />
                                         <ModalPhotoDetails modalPhoto={this.state.modalPhoto} />
                                     </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
+                                    <a className={"carousel-control-prev"} onClick={() => this.carouselLeft(this.state.modalPhoto.num)} href="#carouselExampleControls" role="button" data-slide="prev">
+                                        <span className={"carousel-control-prev-icon"} aria-hidden="true"></span>
+                                        <span className={"sr-only"}>Previous</span>
                                     </a>
-                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
+                                    <a className={"carousel-control-next"} onClick={() => this.carouselRight(this.state.modalPhoto.num)} href="#carouselExampleControls" role="button" data-slide="next">
+                                        <span className={"carousel-control-next-icon"} aria-hidden="true"></span>
+                                        <span className={"sr-only"}>Next</span>
                                     </a>
                                 </div>
                             </div>

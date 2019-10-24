@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="">
+    <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="few little fixes for the modal info popup box">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Body.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Body.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PhotoBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PhotoBox.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="F:/DevPrograms/visualvm_141/visualvm_141/bin/visualvm.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -48,6 +47,12 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\photoportfolio\public" />
+      <recent name="C:\IdeaProjects\photoportfolio\src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -160,6 +165,10 @@
       <option name="presentableId" value="Default" />
       <updated>1567740263320</updated>
       <workItem from="1567740266569" duration="44452000" />
+      <workItem from="1568817214028" duration="9814000" />
+      <workItem from="1569247835287" duration="2420000" />
+      <workItem from="1570587241421" duration="5439000" />
+      <workItem from="1571884914332" duration="1420000" />
     </task>
     <task id="LOCAL-00001" summary="working on photo service">
       <created>1567906476729</created>
@@ -203,7 +212,21 @@
       <option name="project" value="LOCAL" />
       <updated>1568173851306</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="few little fixes for the modal info popup box">
+      <created>1568845993382</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1568845993382</updated>
+    </task>
+    <task id="LOCAL-00008" summary="stuff for photo site">
+      <created>1570589761347</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1570589761347</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +237,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -226,21 +251,21 @@
     <MESSAGE value="adding the photo information to each photobox" />
     <MESSAGE value="adding some front end UI stuff" />
     <MESSAGE value="working on stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on stuff" />
+    <MESSAGE value="few little fixes for the modal info popup box" />
+    <MESSAGE value="stuff for photo site" />
+    <option name="LAST_COMMIT_MESSAGE" value="stuff for photo site" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>8</line>
-          <properties lambdaOrdinal="-1" />
+          <line>4</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>10</line>
-          <properties lambdaOrdinal="-1" />
+          <line>14</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
