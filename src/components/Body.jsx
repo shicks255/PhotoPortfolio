@@ -13,20 +13,19 @@ export default class Body extends React.Component {
         this.getAllPhotos()
 
         this.doModal = this.doModal.bind(this);
+        this.setModal = this.setModal.bind(this);
         this.carouselLeft = this.carouselLeft.bind(this);
         this.carouselRight = this.carouselRight.bind(this);
     }
 
     carouselLeft(currentIndex) {
-        console.log(currentIndex);
-        this.setState({modalPhoto: this.state.photos.find((t) => t.number = currentIndex-1)})
-        // this.doModal(this.state.modalPhoto);
+        let photo = this.state.photos.find((t) => t.num === currentIndex-1)
+        this.setModal(photo);
     }
 
     carouselRight(currentIndex) {
-        console.log(currentIndex);
-        this.setState({modalPhoto: this.state.photos.find((t) => t.number = currentIndex+1)})
-        // this.doModal(this.state.modalPhoto);
+        let photo = this.state.photos.find((t) => t.num === currentIndex+1)
+        this.setModal(photo);
     }
 
     doModal(photo) {
@@ -37,6 +36,14 @@ export default class Body extends React.Component {
         this.setState({ modalPhoto: photo })
 
         $('.modal').modal('toggle');
+    }
+
+    setModal(photo) {
+        $('#modalImage')
+            .attr('src', `/image/${photo.fileName}`)
+            .attr('alt', photo.name);
+
+        this.setState({ modalPhoto: photo })
     }
 
     getAllPhotos() {
