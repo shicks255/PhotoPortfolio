@@ -14,6 +14,7 @@ export default class Body extends React.Component {
 
         this.doModal = this.doModal.bind(this);
         this.setModal = this.setModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
         this.carouselLeft = this.carouselLeft.bind(this);
         this.carouselRight = this.carouselRight.bind(this);
     }
@@ -26,6 +27,10 @@ export default class Body extends React.Component {
     carouselRight(currentIndex) {
         let photo = this.state.photos.find((t) => t.num === currentIndex+1)
         this.setModal(photo);
+    }
+
+    closeModal() {
+        $( '.modal' ).modal('toggle');
     }
 
     doModal(photo) {
@@ -75,6 +80,9 @@ export default class Body extends React.Component {
                     <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
                         <div className={'modal-content'}>
                             <div className={'modal-body'}>
+                                <button type={'button'} onClick={() => this.closeModal()} className={'close'} aria-label={'Close'}>
+                                    X
+                                </button>
                                 <div id={'carouselControls'} className={'carousel slide'}>
                                     <div className={'carousel-inner'}>
                                         <img id={'modalImage'} alt={''} width={'100%'} src={''} />
