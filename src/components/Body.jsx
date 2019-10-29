@@ -1,6 +1,7 @@
 import React from 'react';
 import PhotoBox from './PhotoBox';
 import ModalPhotoDetails from "./ModalPhotoDetails";
+import close from 'open-iconic/svg/x.svg';
 import $ from 'jquery/dist/jquery';
 export default class Body extends React.Component {
 
@@ -81,7 +82,7 @@ export default class Body extends React.Component {
                         <div className={'modal-content'}>
                             <div className={'modal-body'}>
                                 <button type={'button'} onClick={() => this.closeModal()} className={'close'} aria-label={'Close'}>
-                                    X
+                                    <span className={'oi oi-x'} title={'x'} aria-hidden={'true'}></span>
                                 </button>
                                 <div id={'carouselControls'} className={'carousel slide'}>
                                     <div className={'carousel-inner'}>
