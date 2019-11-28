@@ -15,6 +15,18 @@ body {
   padding-right: 0 !important;
 }
 
+.modal-body {
+  padding: .2rem;
+}
+
+#carouselControls {
+  margin-top: -.2rem;
+}
+
+.carousel-inner {
+  top: -1.5rem;
+}
+
 .close {
   position: sticky;
   top: 5%;
@@ -22,9 +34,18 @@ body {
   z-index: 5000;
 }
 
-.carousel-control-prev {
-  /*background-color: white;*/
-  /*opacity: 0;*/
+/*.carousel-control-prev:hover{*/
+/*  background-color: white;*/
+/*  opacity: .5;*/
+/*}*/
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  border-radius: 50px;
+  background-color: red;
+}
+
+.src-only {
+  margin-left: 5px;
 }
 
 .modal-dialog {

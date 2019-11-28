@@ -9,7 +9,8 @@ export default class Body extends React.Component {
         super(props);
         this.state = {
             photos: [],
-            modalPhoto: undefined
+            modalPhoto: undefined,
+            showDetails: false
         }
         this.getAllPhotos()
 
@@ -75,6 +76,8 @@ export default class Body extends React.Component {
             return <PhotoBox key={x.fileName} clickFunction={this.doModal} photo={x}></PhotoBox>
         })
 
+        let details = this.state.showDetails ?  <ModalPhotoDetails modalPhoto={this.state.modalPhoto} /> : '';
+
         return (
             <div>
                 <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} style={{ paddingRight: "0" }} role={'dialog'}>
@@ -87,7 +90,7 @@ export default class Body extends React.Component {
                                 <div id={'carouselControls'} className={'carousel slide'}>
                                     <div className={'carousel-inner'}>
                                         <img id={'modalImage'} alt={''} width={'100%'} src={''} />
-                                        <ModalPhotoDetails modalPhoto={this.state.modalPhoto} />
+                                        {details}
                                     </div>
                                     <a className={"carousel-control-prev"} onClick={() => this.carouselLeft(this.state.modalPhoto.num)} href="#carouselExampleControls" role="button" data-slide="prev">
                                         <span className={"carousel-control-prev-icon"} aria-hidden="true"></span>
