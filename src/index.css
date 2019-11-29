@@ -39,6 +39,11 @@ body {
 /*  opacity: .5;*/
 /*}*/
 
+button.close {
+  background-color: blue !important;
+  border-radius: 50px;
+}
+
 .carousel-control-prev-icon, .carousel-control-next-icon {
   border-radius: 50px;
   background-color: red;

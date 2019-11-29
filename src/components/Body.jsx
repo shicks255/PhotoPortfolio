@@ -19,6 +19,7 @@ export default class Body extends React.Component {
         this.closeModal = this.closeModal.bind(this);
         this.carouselLeft = this.carouselLeft.bind(this);
         this.carouselRight = this.carouselRight.bind(this);
+        this.togglePhotoInfo = this.togglePhotoInfo.bind(this);
     }
 
     carouselLeft(currentIndex) {
@@ -53,6 +54,12 @@ export default class Body extends React.Component {
         this.setState({ modalPhoto: photo })
     }
 
+    togglePhotoInfo() {
+        this.setState({
+            showDetails: !this.state.showDetails
+        });
+    }
+
     getAllPhotos() {
         let request = fetch("/image");
         request
@@ -73,10 +80,20 @@ export default class Body extends React.Component {
 
     render() {
         let pics = this.state.photos.map(x => {
-            return <PhotoBox key={x.fileName} clickFunction={this.doModal} photo={x}></PhotoBox>
+            return <PhotoBox
+                key={x.fileName}
+                clickFunction={this.doModal}
+                photo={x}
+                showDetails={this.state.showDetails}
+                togglePhotoDetails={this.togglePhotoInfo}>
+            </PhotoBox>
         })
 
-        let details = this.state.showDetails ?  <ModalPhotoDetails modalPhoto={this.state.modalPhoto} /> : '';
+        let details = this.state.showDetails ?
+            <ModalPhotoDetails modalPhoto={this.state.modalPhoto} /> : '';
+        let showDetailsButton = !this.state.showDetails ?
+            <button type={'button'} className={'btn btn-success'} onClick={() => this.togglePhotoInfo()}>Info...</button> :
+            <button type={'button'} className={'btn btn-success'} onClick={() => this.togglePhotoInfo()}>Hide info...</button>
 
         return (
             <div>
@@ -101,6 +118,7 @@ export default class Body extends React.Component {
                                         <span className={"sr-only"}>Next</span>
                                     </a>
                                 </div>
+                                {showDetailsButton}
                             </div>
                             {/* <div className={'modal-body'}>
                                 <img id={'modalImage'} alt={''} width={'100%'} src={''} />

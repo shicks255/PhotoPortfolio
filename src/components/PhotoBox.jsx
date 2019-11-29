@@ -8,6 +8,13 @@ export default class PhotoBox extends React.Component
         this.state = {
             pictureName: '/image/' + props.photo.fileName + '/thumbnail/'
         }
+
+        this.togglePhotoInfo = this.togglePhotoInfo.bind(this);
+    }
+
+    togglePhotoInfo()
+    {
+        this.props.togglePhotoInfo();
     }
 
     render()
