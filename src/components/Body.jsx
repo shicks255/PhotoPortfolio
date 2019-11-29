@@ -120,12 +120,6 @@ export default class Body extends React.Component {
                                 </div>
                                 {showDetailsButton}
                             </div>
-                            {/* <div className={'modal-body'}>
-                                <img id={'modalImage'} alt={''} width={'100%'} src={''} />
-                            </div>
-                            <div className={'modal-footer'}>
-                                <ModalPhotoDetails modalPhoto={this.state.modalPhoto} />
-                            </div> */}
                         </div>
                     </div>
                 </div>
