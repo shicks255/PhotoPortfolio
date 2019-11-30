@@ -107,7 +107,6 @@ export default class Body extends React.Component {
                                 <div id={'carouselControls'} className={'carousel slide'}>
                                     <div className={'carousel-inner'}>
                                         <img id={'modalImage'} alt={''} width={'100%'} src={''} />
-                                        {details}
                                     </div>
                                     <a className={"carousel-control-prev"} onClick={() => this.carouselLeft(this.state.modalPhoto.num)} href="#carouselExampleControls" role="button" data-slide="prev">
                                         <span className={"carousel-control-prev-icon"} aria-hidden="true"></span>
@@ -118,6 +117,7 @@ export default class Body extends React.Component {
                                         <span className={"sr-only"}>Next</span>
                                     </a>
                                 </div>
+                                {details}
                                 {showDetailsButton}
                             </div>
                         </div>

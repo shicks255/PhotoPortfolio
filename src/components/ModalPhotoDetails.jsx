@@ -12,22 +12,44 @@ export default function ModalPhotoDetails(props)
                 <table>
                     <tbody>
                     <tr>
+                        <i class={'fas fa-map-marker-alt'}></i>
                         <td colSpan={2}>{props.modalPhoto.description}</td>
                     </tr>
                     <tr>
-                        <td><b>Exposure:</b> {props.modalPhoto.exposureTime}</td>
-                        <td><b>Fstop:</b> {props.modalPhoto.fnumber}</td>
+                        <td>
+                            <i class={'fas fa-clock'}></i>
+                            <b>Exposure:</b> {props.modalPhoto.exposureTime}
+                        </td>
+                        <td>
+                            <i class={'fas fa-asterisk'}></i>
+                            <b>Fstop:</b> {props.modalPhoto.fnumber}
+                        </td>
                     </tr>
                     <tr>
-                        <td><b>Focal length:</b> {props.modalPhoto.focalLength}</td>
-                        <td><b>Iso:</b> {props.modalPhoto.iso}</td>
+                        <td>
+                            <i class={'fas fa-ruler'}></i>
+                            <b>Focal length:</b> {props.modalPhoto.focalLength}
+                        </td>
+                        <td>
+                            <i class={'fas fa-cloud-sun'}></i>
+                            <b>Iso:</b> {props.modalPhoto.iso}
+                        </td>
                     </tr>
                     <tr>
-                        <td colSpan={2}><b>Lens:</b> {props.modalPhoto.lensModel}</td>
+                        <td colSpan={2}>
+                            <i class={'fas fa-camera'}></i>
+                            <b>Lens:</b> {props.modalPhoto.lensModel}
+                        </td>
                     </tr>
                     <tr>
-                        <td><b>Added:</b> {dateAdded.toDateString()} {dateAdded.toLocaleTimeString()}</td>
-                        <td><b>Date taken:</b> {dateTaken.toDateString()} {dateTaken.toLocaleTimeString()}</td>
+                        <td>
+                            <i className={'fas fa-calendar-alt'}></i>
+                            <b>Added:</b> {dateAdded.toDateString()} {dateAdded.toLocaleTimeString()}
+                        </td>
+                        <td>
+                            <i className={'fas fa-calendar-alt'}></i>
+                            <b>Date taken:</b> {dateTaken.toDateString()} {dateTaken.toLocaleTimeString()}
+                        </td>
                     </tr>
                     </tbody>
                 </table>
