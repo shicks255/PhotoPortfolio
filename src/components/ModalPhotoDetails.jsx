@@ -7,10 +7,8 @@ export default function ModalPhotoDetails(props)
     if (props.modalPhoto) {
 
         let tagList = props.modalPhoto.tags.map((tag, index) =>
-            <span key={index}>{tag.name}</span>
+            <span className={'badge badge-pill badge-primary'} key={index}>{tag.name}</span>
         );
-
-
 
         let dateTaken = new Date(props.modalPhoto.taken);
         let dateAdded = new Date(props.modalPhoto.addedOn);
@@ -62,6 +60,7 @@ export default function ModalPhotoDetails(props)
                     </tr>
                     </tbody>
                 </table>
+                Tags:
                 {tagList}
             </div>
     }

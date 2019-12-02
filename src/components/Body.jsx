@@ -121,8 +121,19 @@ export default class Body extends React.Component {
                                 {showDetailsButton}
                             </div>
                         </div>
-                    </div>
+                    </div>s
                 </div>
+
+                <form>
+                    <div className={'form-group'}>
+                        <label htmlFor={''}>Photos with tag:</label>
+                        <input type={''} className={'form-control'} aria-describedby={''}></input>
+                        <small id={''} className={'form-text text-muted'}>Test</small>
+                    </div>
+                </form>
+
+
+                Photos with tag:
 
                 <div className={'row'} style={{ marginBottom: "5px" }}>
                     {pics}
