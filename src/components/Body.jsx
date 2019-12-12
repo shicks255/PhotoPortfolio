@@ -8,11 +8,20 @@ export default class Body extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            photos: [],
+            allPhotos: [],
+            photosToDisplay: [],
             modalPhoto: undefined,
-            showDetails: false
+            showDetails: false,
+            allTags: [],
+            tempTagSearch: '',
+            tagToSearch: '',
+            loading: true
         }
-        this.getAllPhotos()
+
+        // this.getAllPhotos();
+        // this.getAllTags();
+
+        this.loadStuff()
 
         this.doModal = this.doModal.bind(this);
         this.setModal = this.setModal.bind(this);
@@ -20,15 +29,30 @@ export default class Body extends React.Component {
         this.carouselLeft = this.carouselLeft.bind(this);
         this.carouselRight = this.carouselRight.bind(this);
         this.togglePhotoInfo = this.togglePhotoInfo.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.filterByTag = this.filterByTag.bind(this);
+    }
+
+    async loadStuff() {
+        var result = await this.getAllPhotos();
+        this.getAllTags();
+    }
+
+    filterByTag(e) {
+        this.setState({tagToSearch: e.target.value});
+    }
+
+    handleChange(e) {
+        this.setState({tempTagSearch: e.target.value});
     }
 
     carouselLeft(currentIndex) {
-        let photo = this.state.photos.find((t) => t.num === currentIndex-1)
+        let photo = this.state.photosToDisplay.find((t) => t.num === currentIndex-1)
         this.setModal(photo);
     }
 
     carouselRight(currentIndex) {
-        let photo = this.state.photos.find((t) => t.num === currentIndex+1)
+        let photo = this.state.photosToDisplay.find((t) => t.num === currentIndex+1)
         this.setModal(photo);
     }
 
@@ -61,8 +85,7 @@ export default class Body extends React.Component {
     }
 
     getAllPhotos() {
-        let request = fetch("/image");
-        request
+        return (fetch("/image")
             .then(
                 res => res.json()
             )
@@ -73,13 +96,25 @@ export default class Body extends React.Component {
                 })
             )
             .then(
-                photos => this.setState({ photos: photos }),
+                photos => this.setState({
+                    allPhotos: photos,
+                    photosToDisplay: photos,
+                    loading: false
+                }),
                 error => { }
-            );
+            ));
+    }
+
+    getAllTags() {
+        const tags = this.state.allPhotos
+            .flatMap(i => i.tags
+                .flatMap(k => k.name));
+
+        this.setState({allTags: new Set(tags)});
     }
 
     render() {
-        let pics = this.state.photos.map(x => {
+        let pics = this.state.photosToDisplay.map(x => {
             return <PhotoBox
                 key={x.fileName}
                 clickFunction={this.doModal}
@@ -124,10 +159,10 @@ export default class Body extends React.Component {
                     </div>s
                 </div>
 
-                <form>
+                <form onSubmit={this.test}>
                     <div className={'form-group'}>
                         <label htmlFor={''}>Photos with tag:</label>
-                        <input type={''} className={'form-control'} aria-describedby={''}></input>
+                        <input onChange={this.handleChange} type={''} className={'form-control'} aria-describedby={''}></input>
                         <small id={''} className={'form-text text-muted'}>Test</small>
                     </div>
                 </form>
