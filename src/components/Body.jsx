@@ -18,10 +18,7 @@ export default class Body extends React.Component {
             loading: true
         }
 
-        // this.getAllPhotos();
-        // this.getAllTags();
-
-        this.loadStuff()
+        this.loadPhotosAndTags()
 
         this.doModal = this.doModal.bind(this);
         this.setModal = this.setModal.bind(this);
@@ -31,15 +28,32 @@ export default class Body extends React.Component {
         this.togglePhotoInfo = this.togglePhotoInfo.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.filterByTag = this.filterByTag.bind(this);
+        this.filter = this.filter.bind(this);
     }
 
-    async loadStuff() {
+    async loadPhotosAndTags() {
         var result = await this.getAllPhotos();
         this.getAllTags();
     }
 
     filterByTag(e) {
-        this.setState({tagToSearch: e.target.value});
+        this.setState({
+            tagToSearch: this.state.tempTagSearch,
+            tempTagSearch: ''
+        }, () => this.filter(this.state.tagToSearch));
+    }
+
+    filter(tag) {
+        console.log(tag);
+        console.log('jo');
+        if (tag) {
+            let photosToDisplay = this.state.allPhotos.filter( photo => {
+                return photo.tags.map( tag => tag.name.toLowerCase()).includes(tag)
+            });
+            this.setState({
+                photosToDisplay: photosToDisplay
+            });
+        }
     }
 
     handleChange(e) {
@@ -159,12 +173,20 @@ export default class Body extends React.Component {
                     </div>s
                 </div>
 
-                <form onSubmit={this.test}>
+                <form onSubmit={this.filterByTag}>
                     <div className={'form-group'}>
                         <label htmlFor={''}>Photos with tag:</label>
-                        <input onChange={this.handleChange} type={''} className={'form-control'} aria-describedby={''}></input>
+                        <input onChange={this.handleChange}
+                               type={''}
+                               className={'form-control'}
+                               aria-describedby={''}
+                                value={this.state.tempTagSearch}>
+                        </input>
                         <small id={''} className={'form-text text-muted'}>Test</small>
                     </div>
+                    <button type={'submit'} className={'btn btn-primary'}>
+                        Filter
+                    </button>
                 </form>
 
 
