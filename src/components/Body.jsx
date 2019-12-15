@@ -37,6 +37,7 @@ export default class Body extends React.Component {
     }
 
     filterByTag(e) {
+        e.preventDefault();
         this.setState({
             tagToSearch: this.state.tempTagSearch,
             tempTagSearch: ''
@@ -44,11 +45,12 @@ export default class Body extends React.Component {
     }
 
     filter(tag) {
-        console.log(tag);
-        console.log('jo');
         if (tag) {
             let photosToDisplay = this.state.allPhotos.filter( photo => {
-                return photo.tags.map( tag => tag.name.toLowerCase()).includes(tag)
+                return photo.tags.map( tag => tag.name.toLowerCase()).includes(tag.toLowerCase())
+            }).map((t,i) => {
+                t.num = i;
+                return t
             });
             this.setState({
                 photosToDisplay: photosToDisplay
@@ -136,13 +138,22 @@ export default class Body extends React.Component {
                 showDetails={this.state.showDetails}
                 togglePhotoDetails={this.togglePhotoInfo}>
             </PhotoBox>
-        })
+        });
 
         let details = this.state.showDetails ?
             <ModalPhotoDetails modalPhoto={this.state.modalPhoto} /> : '';
         let showDetailsButton = !this.state.showDetails ?
             <button type={'button'} className={'btn btn-success'} onClick={() => this.togglePhotoInfo()}>Info...</button> :
             <button type={'button'} className={'btn btn-success'} onClick={() => this.togglePhotoInfo()}>Hide info...</button>
+        let selectedTag = this.state.tagToSearch.length > 0 ?
+            <span>
+                Photos tagged with:
+                    <span href={'#'} className={'badge badge-pill badge-primary'}>
+                        {this.state.tagToSearch}&nbsp;
+                        <span className={'oi oi-x'} title={'x'} ></span>
+                    </span>
+            </span> : '';
+
 
         return (
             <div>
@@ -175,7 +186,7 @@ export default class Body extends React.Component {
 
                 <form onSubmit={this.filterByTag}>
                     <div className={'form-group'}>
-                        <label htmlFor={''}>Photos with tag:</label>
+                        <label htmlFor={''}>Tag:</label>
                         <input onChange={this.handleChange}
                                type={''}
                                className={'form-control'}
@@ -190,7 +201,7 @@ export default class Body extends React.Component {
                 </form>
 
 
-                Photos with tag:
+                {selectedTag}
 
                 <div className={'row'} style={{ marginBottom: "5px" }}>
                     {pics}
