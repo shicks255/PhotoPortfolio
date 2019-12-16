@@ -29,6 +29,8 @@ export default class Body extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.filterByTag = this.filterByTag.bind(this);
         this.filter = this.filter.bind(this);
+        this.showTags = this.showTags.bind(this);
+        this.hideTags = this.hideTags.bind(this);
     }
 
     async loadPhotosAndTags() {
@@ -45,6 +47,8 @@ export default class Body extends React.Component {
     }
 
     filter(tag) {
+        console.log(tag);
+        console.log('hi');
         if (tag) {
             let photosToDisplay = this.state.allPhotos.filter( photo => {
                 return photo.tags.map( tag => tag.name.toLowerCase()).includes(tag.toLowerCase())
@@ -74,6 +78,15 @@ export default class Body extends React.Component {
 
     closeModal() {
         $( '.modal' ).modal('toggle');
+    }
+
+    showTags() {
+        $( '#tagComboBox' ).addClass('visible').removeClass('invisible');
+    }
+
+    hideTags(e) {
+        console.log(e);
+        $( '#tagComboBox' ).addClass('invisible').removeClass('visible');
     }
 
     doModal(photo) {
@@ -126,7 +139,7 @@ export default class Body extends React.Component {
             .flatMap(i => i.tags
                 .flatMap(k => k.name));
 
-        this.setState({allTags: new Set(tags)});
+        this.setState({allTags: Array.from(new Set(tags))});
     }
 
     render() {
@@ -148,11 +161,16 @@ export default class Body extends React.Component {
         let selectedTag = this.state.tagToSearch.length > 0 ?
             <span>
                 Photos tagged with:
-                    <span href={'#'} className={'badge badge-pill badge-primary'}>
-                        {this.state.tagToSearch}&nbsp;
-                        <span className={'oi oi-x'} title={'x'} ></span>
-                    </span>
+                <span href={'#'} className={'badge badge-pill badge-primary'}>
+                    {this.state.tagToSearch}&nbsp;
+                    <span className={'oi oi-x'} title={'x'} ></span>
+                </span>
             </span> : '';
+        let tagList = this.state.allTags.map(t => {
+            return <li onClick={() => this.filter()}  className={'list-group-item'} key={t}>
+                {t}
+            </li>
+        });
 
 
         return (
@@ -184,15 +202,20 @@ export default class Body extends React.Component {
                     </div>s
                 </div>
 
-                <form onSubmit={this.filterByTag}>
-                    <div className={'form-group'}>
+                <form onSubmit={this.filterByTag} onBlur={this.hideTags}>
+                    <div className={'form-group'} onFocus={this.showTags} >
                         <label htmlFor={''}>Tag:</label>
                         <input onChange={this.handleChange}
                                type={''}
                                className={'form-control'}
                                aria-describedby={''}
-                                value={this.state.tempTagSearch}>
+                               value={this.state.tempTagSearch}>
                         </input>
+                        <div id={'tagComboBox'} className={'tag-searcher invisible'}>
+                            <ul className={'list-group'}>
+                                {tagList}
+                            </ul>
+                        </div>
                         <small id={''} className={'form-text text-muted'}>Test</small>
                     </div>
                     <button type={'submit'} className={'btn btn-primary'}>

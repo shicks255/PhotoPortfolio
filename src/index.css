@@ -49,6 +49,15 @@ body {
 /*  opacity: .5;*/
 /*}*/
 
+.tag-searcher {
+  position: absolute;
+  z-index: 1000;
+}
+
+.list-group-item:hover {
+  background-color: grey;
+}
+
 button.close {
   background-color: blue !important;
   border-radius: 50px;
