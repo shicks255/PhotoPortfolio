@@ -31,6 +31,7 @@ export default class Body extends React.Component {
         this.filter = this.filter.bind(this);
         this.showTags = this.showTags.bind(this);
         this.hideTags = this.hideTags.bind(this);
+        this.clickTag = this.clickTag.bind(this);
     }
 
     async loadPhotosAndTags() {
@@ -46,9 +47,12 @@ export default class Body extends React.Component {
         }, () => this.filter(this.state.tagToSearch));
     }
 
+    clickTag(e) {
+        let tag = e.currentTarget.dataset.id;
+        this.filter(tag);
+    }
+
     filter(tag) {
-        console.log(tag);
-        console.log('hi');
         if (tag) {
             let photosToDisplay = this.state.allPhotos.filter( photo => {
                 return photo.tags.map( tag => tag.name.toLowerCase()).includes(tag.toLowerCase())
@@ -85,8 +89,10 @@ export default class Body extends React.Component {
     }
 
     hideTags(e) {
-        console.log(e);
-        $( '#tagComboBox' ).addClass('invisible').removeClass('visible');
+        console.log('hi');
+        setTimeout( () => {
+            $( '#tagComboBox' ).addClass('invisible').removeClass('visible');
+            }, 500);
     }
 
     doModal(photo) {
@@ -138,6 +144,7 @@ export default class Body extends React.Component {
         const tags = this.state.allPhotos
             .flatMap(i => i.tags
                 .flatMap(k => k.name));
+        tags.sort( (a,b) => a.toLowerCase() > b.toLowerCase() ? 1 : -1);
 
         this.setState({allTags: Array.from(new Set(tags))});
     }
@@ -167,7 +174,7 @@ export default class Body extends React.Component {
                 </span>
             </span> : '';
         let tagList = this.state.allTags.map(t => {
-            return <li onClick={() => this.filter()}  className={'list-group-item'} key={t}>
+            return <li data-id={t} onClick={this.clickTag}  className={'list-group-item'} key={t}>
                 {t}
             </li>
         });
@@ -202,8 +209,8 @@ export default class Body extends React.Component {
                     </div>s
                 </div>
 
-                <form onSubmit={this.filterByTag} onBlur={this.hideTags}>
-                    <div className={'form-group'} onFocus={this.showTags} >
+                <form onSubmit={this.filterByTag}>
+                    <div className={'form-group'} onFocus={this.showTags} onBlur={this.hideTags}>
                         <label htmlFor={''}>Tag:</label>
                         <input onChange={this.handleChange}
                                type={''}
