@@ -13,6 +13,7 @@ export default class Body extends React.Component {
             modalPhoto: undefined,
             showDetails: false,
             allTags: [],
+            filteredTags: [],
             tempTagSearch: '',
             tagToSearch: '',
             loading: true
@@ -49,6 +50,9 @@ export default class Body extends React.Component {
 
     clickTag(e) {
         let tag = e.currentTarget.dataset.id;
+        this.setState({
+            tagToSearch: tag
+        });
         this.filter(tag);
     }
 
@@ -67,7 +71,13 @@ export default class Body extends React.Component {
     }
 
     handleChange(e) {
-        this.setState({tempTagSearch: e.target.value});
+        let input = e.target.value;
+
+        let filteredTags = this.state.allTags.filter( s => s.toLowerCase().includes(input.toLowerCase()));
+        this.setState({
+            tempTagSearch: input,
+            filteredTags: filteredTags
+        });
     }
 
     carouselLeft(currentIndex) {
@@ -92,7 +102,7 @@ export default class Body extends React.Component {
         console.log('hi');
         setTimeout( () => {
             $( '#tagComboBox' ).addClass('invisible').removeClass('visible');
-            }, 500);
+            }, 150);
     }
 
     doModal(photo) {
@@ -146,7 +156,10 @@ export default class Body extends React.Component {
                 .flatMap(k => k.name));
         tags.sort( (a,b) => a.toLowerCase() > b.toLowerCase() ? 1 : -1);
 
-        this.setState({allTags: Array.from(new Set(tags))});
+        this.setState({
+            allTags: Array.from(new Set(tags)),
+            filteredTags: Array.from(new Set(tags)),
+        });
     }
 
     render() {
@@ -173,7 +186,7 @@ export default class Body extends React.Component {
                     <span className={'oi oi-x'} title={'x'} ></span>
                 </span>
             </span> : '';
-        let tagList = this.state.allTags.map(t => {
+        let tagList = this.state.filteredTags.map(t => {
             return <li data-id={t} onClick={this.clickTag}  className={'list-group-item'} key={t}>
                 {t}
             </li>
