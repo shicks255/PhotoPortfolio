@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="few little fixes for the modal info popup box">
+    <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/CarouselModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Body.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Body.jsx" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +20,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:/javalib/apache-maven-3.3.9" />
+        <option name="mavenHome" value="C:/javalib/apache-maven-3.5.4" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -35,10 +35,15 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1QRjNb4PZy7YIPN6Wot4BI2OuvK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PhotoService" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -46,7 +51,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="F:/DevPrograms/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -54,19 +59,13 @@
       <recent name="C:\IdeaProjects\photoportfolio\src" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="npm.npm start">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -101,12 +100,6 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
       <method />
-    </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -157,6 +150,18 @@
       </map>
     </option>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="" />
@@ -168,7 +173,17 @@
       <workItem from="1568817214028" duration="9814000" />
       <workItem from="1569247835287" duration="2420000" />
       <workItem from="1570587241421" duration="5439000" />
-      <workItem from="1571884914332" duration="1420000" />
+      <workItem from="1571884914332" duration="12023000" />
+      <workItem from="1572443278622" duration="3192000" />
+      <workItem from="1573254732846" duration="1809000" />
+      <workItem from="1574980539357" duration="14409000" />
+      <workItem from="1575249944192" duration="4905000" />
+      <workItem from="1575780130407" duration="123000" />
+      <workItem from="1575780283087" duration="31000" />
+      <workItem from="1576015959306" duration="11664000" />
+      <workItem from="1576381194240" duration="9516000" />
+      <workItem from="1576550955834" duration="3690000" />
+      <workItem from="1576623611775" duration="6358000" />
     </task>
     <task id="LOCAL-00001" summary="working on photo service">
       <created>1567906476729</created>
@@ -226,11 +241,135 @@
       <option name="project" value="LOCAL" />
       <updated>1570589761347</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="working on modal carousel next and prev">
+      <created>1571886366606</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1571886366606</updated>
+    </task>
+    <task id="LOCAL-00010" summary="getting the modal next and prev to work">
+      <created>1571971265936</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1571971265936</updated>
+    </task>
+    <task id="LOCAL-00011" summary="working on the modal some more, specifically a close icon">
+      <created>1572230238272</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1572230238272</updated>
+    </task>
+    <task id="LOCAL-00012" summary="adding stuff for icons.">
+      <created>1572319009887</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1572319009887</updated>
+    </task>
+    <task id="LOCAL-00013" summary="more style stuff">
+      <created>1574983238254</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1574983238254</updated>
+    </task>
+    <task id="LOCAL-00014" summary="showing and hiding photo details">
+      <created>1575000216006</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575000216007</updated>
+    </task>
+    <task id="LOCAL-00015" summary="playing with shadows">
+      <created>1575000862616</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575000862616</updated>
+    </task>
+    <task id="LOCAL-00016" summary="adding icons">
+      <created>1575074150104</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1575074150104</updated>
+    </task>
+    <task id="LOCAL-00017" summary="adding tags">
+      <created>1575086305626</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1575086305626</updated>
+    </task>
+    <task id="LOCAL-00018" summary="making tags look nicer, and begining to add the form to search by tags">
+      <created>1575261717748</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1575261717748</updated>
+    </task>
+    <task id="LOCAL-00019" summary="working on tag stuff">
+      <created>1576121345363</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1576121345363</updated>
+    </task>
+    <task id="LOCAL-00020" summary="more work with the tags">
+      <created>1576210776287</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1576210776287</updated>
+    </task>
+    <task id="LOCAL-00021" summary="more improvements, ie searching/filtering by tag">
+      <created>1576387943761</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1576387943761</updated>
+    </task>
+    <task id="LOCAL-00022" summary="working on combo box implementatino">
+      <created>1576468077535</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1576468077535</updated>
+    </task>
+    <task id="LOCAL-00023" summary="a little wonky, but the filter show/display/click is mostly working">
+      <created>1576554691957</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1576554691957</updated>
+    </task>
+    <task id="LOCAL-00024" summary="working on my primitive combo box">
+      <created>1576555227687</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1576555227687</updated>
+    </task>
+    <task id="LOCAL-00025" summary="factoring out the filter controls to separate component">
+      <created>1576637609812</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1576637609812</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../typescript_problems/src/Basics/Person.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -253,19 +392,89 @@
     <MESSAGE value="working on stuff" />
     <MESSAGE value="few little fixes for the modal info popup box" />
     <MESSAGE value="stuff for photo site" />
-    <option name="LAST_COMMIT_MESSAGE" value="stuff for photo site" />
+    <MESSAGE value="working on modal carousel next and prev" />
+    <MESSAGE value="getting the modal next and prev to work" />
+    <MESSAGE value="working on the modal some more, specifically a close icon" />
+    <MESSAGE value="adding stuff for icons." />
+    <MESSAGE value="more style stuff" />
+    <MESSAGE value="showing and hiding photo details" />
+    <MESSAGE value="playing with shadows" />
+    <MESSAGE value="adding icons" />
+    <MESSAGE value="adding tags" />
+    <MESSAGE value="making tags look nicer, and begining to add the form to search by tags" />
+    <MESSAGE value="working on tag stuff" />
+    <MESSAGE value="more work with the tags" />
+    <MESSAGE value="more improvements, ie searching/filtering by tag" />
+    <MESSAGE value="working on combo box implementatino" />
+    <MESSAGE value="a little wonky, but the filter show/display/click is mostly working" />
+    <MESSAGE value="working on my primitive combo box" />
+    <MESSAGE value="factoring out the filter controls to separate component" />
+    <option name="LAST_COMMIT_MESSAGE" value="factoring out the filter controls to separate component" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="877" y="119" key="CommitChangelistDialog2" timestamp="1576637609416">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="877" y="119" key="CommitChangelistDialog2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576387943115" />
+    <state x="877" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1576637609416" />
+    <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1576120129604">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1576120129604" />
+    <state width="629" height="85" key="GridCell.Tab.0.bottom" timestamp="1576622859805">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="629" height="85" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
+    <state width="629" height="85" key="GridCell.Tab.0.center" timestamp="1576622859805">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="629" height="85" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
+    <state width="629" height="85" key="GridCell.Tab.0.left" timestamp="1576622859805">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="629" height="85" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
+    <state width="629" height="85" key="GridCell.Tab.0.right" timestamp="1576622859805">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="629" height="85" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
+    <state x="461" y="166" key="SettingsEditor" timestamp="1575780307191">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="166" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1575780307191" />
+    <state x="902" y="257" key="Vcs.Push.Dialog.v2" timestamp="1576637611164">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="902" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576387945228" />
+    <state x="902" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1576637611164" />
+    <state x="650" y="388" key="com.intellij.ide.util.TipDialog" timestamp="1576624029110">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="650" y="388" key="com.intellij.ide.util.TipDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576624029110" />
+    <state x="655" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1576550963678" />
+    <state x="1121" y="258" width="606" height="526" key="find.popup" timestamp="1576105023929">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1121" y="258" width="606" height="526" key="find.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576105023929" />
+    <state width="888" height="388" key="javadoc.popup.new" timestamp="1576554643583">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="888" height="388" key="javadoc.popup.new/0.0.1920.1050@0.0.1920.1050" timestamp="1576554643583" />
+    <state x="1005" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1576635491383">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1005" y="243" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1576635491383" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>4</line>
+          <line>5</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>14</line>
+          <line>15</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

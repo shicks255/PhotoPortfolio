@@ -1,8 +1,7 @@
 import React from 'react';
 import PhotoBox from './PhotoBox';
-import ModalPhotoDetails from "./ModalPhotoDetails";
 import FilterControls from "./FilterControls";
-import close from 'open-iconic/svg/x.svg';
+import CarouselModal from "./CarouselModal";
 import $ from 'jquery/dist/jquery';
 export default class Body extends React.Component {
 
@@ -81,14 +80,18 @@ export default class Body extends React.Component {
         });
     }
 
-    carouselLeft(currentIndex) {
-        let photo = this.state.photosToDisplay.find((t) => t.num === currentIndex-1)
-        this.setModal(photo);
+    carouselLeft() {
+        if (this.state.modalPhoto.num > 0) {
+            let photo = this.state.photosToDisplay.find((t) => t.num === this.state.modalPhoto.num-1)
+            this.setModal(photo);
+        }
     }
 
-    carouselRight(currentIndex) {
-        let photo = this.state.photosToDisplay.find((t) => t.num === currentIndex+1)
-        this.setModal(photo);
+    carouselRight() {
+        if (this.state.modalPhoto.num < this.state.photosToDisplay.length-1) {
+            let photo = this.state.photosToDisplay.find((t) => t.num === this.state.modalPhoto.num+1)
+            this.setModal(photo);
+        }
     }
 
     closeModal() {
@@ -174,11 +177,6 @@ export default class Body extends React.Component {
             </PhotoBox>
         });
 
-        let details = this.state.showDetails ?
-            <ModalPhotoDetails modalPhoto={this.state.modalPhoto} /> : '';
-        let showDetailsButton = !this.state.showDetails ?
-            <button type={'button'} className={'btn btn-success'} onClick={() => this.togglePhotoInfo()}>Info...</button> :
-            <button type={'button'} className={'btn btn-success'} onClick={() => this.togglePhotoInfo()}>Hide info...</button>
         let selectedTag = this.state.tagToSearch.length > 0 ?
             <span>
                 Photos tagged with:
@@ -190,32 +188,14 @@ export default class Body extends React.Component {
 
         return (
             <div>
-                <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} style={{ paddingRight: "0" }} role={'dialog'}>
-                    <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
-                        <div className={'modal-content'}>
-                            <div className={'modal-body'}>
-                                <button type={'button'} onClick={() => this.closeModal()} className={'close'} aria-label={'Close'}>
-                                    <span className={'oi oi-x'} title={'x'} aria-hidden={'true'}></span>
-                                </button>
-                                <div id={'carouselControls'} className={'carousel slide'}>
-                                    <div className={'carousel-inner'}>
-                                        <img id={'modalImage'} alt={''} width={'100%'} src={''} />
-                                    </div>
-                                    <a className={"carousel-control-prev"} onClick={() => this.carouselLeft(this.state.modalPhoto.num)} href="#carouselExampleControls" role="button" data-slide="prev">
-                                        <span className={"carousel-control-prev-icon"} aria-hidden="true"></span>
-                                        <span className={"sr-only"}>Previous</span>
-                                    </a>
-                                    <a className={"carousel-control-next"} onClick={() => this.carouselRight(this.state.modalPhoto.num)} href="#carouselExampleControls" role="button" data-slide="next">
-                                        <span className={"carousel-control-next-icon"} aria-hidden="true"></span>
-                                        <span className={"sr-only"}>Next</span>
-                                    </a>
-                                </div>
-                                {details}
-                                {showDetailsButton}
-                            </div>
-                        </div>
-                    </div>s
-                </div>
+                <CarouselModal
+                    closeModalButton={this.closeModal}
+                    carouselLeft={this.carouselLeft}
+                    carouselRight={this.carouselRight}
+                    modalPhoto={this.state.modalPhoto}
+                    showDetails={this.state.showDetails}
+                    togglePhotoInfo={this.togglePhotoInfo}
+                />
 
                 <FilterControls
                     filteredTags={this.state.filteredTags}
