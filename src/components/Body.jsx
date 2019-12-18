@@ -13,9 +13,6 @@ export default class Body extends React.Component {
             modalPhoto: undefined,
             showDetails: false,
             allTags: [],
-            filteredTags: [],
-            tempTagSearch: '',
-            tagToSearch: '',
             loading: true
         }
 
@@ -27,33 +24,12 @@ export default class Body extends React.Component {
         this.carouselLeft = this.carouselLeft.bind(this);
         this.carouselRight = this.carouselRight.bind(this);
         this.togglePhotoInfo = this.togglePhotoInfo.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.filterByTag = this.filterByTag.bind(this);
         this.filter = this.filter.bind(this);
-        this.showTags = this.showTags.bind(this);
-        this.hideTags = this.hideTags.bind(this);
-        this.clickTag = this.clickTag.bind(this);
     }
 
     async loadPhotosAndTags() {
         var result = await this.getAllPhotos();
         this.getAllTags();
-    }
-
-    filterByTag(e) {
-        e.preventDefault();
-        this.setState({
-            tagToSearch: this.state.tempTagSearch,
-            tempTagSearch: ''
-        }, () => this.filter(this.state.tagToSearch));
-    }
-
-    clickTag(e) {
-        let tag = e.currentTarget.dataset.id;
-        this.setState({
-            tagToSearch: tag
-        });
-        this.filter(tag);
     }
 
     filter(tag) {
@@ -68,16 +44,6 @@ export default class Body extends React.Component {
                 photosToDisplay: photosToDisplay
             });
         }
-    }
-
-    handleChange(e) {
-        let input = e.target.value;
-
-        let filteredTags = this.state.allTags.filter( s => s.toLowerCase().includes(input.toLowerCase()));
-        this.setState({
-            tempTagSearch: input,
-            filteredTags: filteredTags
-        });
     }
 
     carouselLeft() {
@@ -96,17 +62,6 @@ export default class Body extends React.Component {
 
     closeModal() {
         $( '.modal' ).modal('toggle');
-    }
-
-    showTags() {
-        $( '#tagComboBox' ).addClass('visible').removeClass('invisible');
-    }
-
-    hideTags(e) {
-        console.log('hi');
-        setTimeout( () => {
-            $( '#tagComboBox' ).addClass('invisible').removeClass('visible');
-            }, 150);
     }
 
     doModal(photo) {
@@ -162,7 +117,6 @@ export default class Body extends React.Component {
 
         this.setState({
             allTags: Array.from(new Set(tags)),
-            filteredTags: Array.from(new Set(tags)),
         });
     }
 
@@ -177,15 +131,6 @@ export default class Body extends React.Component {
             </PhotoBox>
         });
 
-        let selectedTag = this.state.tagToSearch.length > 0 ?
-            <span>
-                Photos tagged with:
-                <span href={'#'} className={'badge badge-pill badge-primary'}>
-                    {this.state.tagToSearch}&nbsp;
-                    <span className={'oi oi-x'} title={'x'} ></span>
-                </span>
-            </span> : '';
-
         return (
             <div>
                 <CarouselModal
@@ -198,15 +143,11 @@ export default class Body extends React.Component {
                 />
 
                 <FilterControls
-                    filteredTags={this.state.filteredTags}
-                    tempTagSearch={this.state.tempTagSearch}
-                    onTagClick={this.clickTag}
-                    onFormSubmit={this.filterByTag}
+                    allTags={this.state.allTags}
+                    onTagClick={this.filter}
                     onFormChange={this.handleChange}
-                    onFocus={this.showTags}
-                    onBlur={this.hideTags}/>
-
-                {selectedTag}
+                    photos={this.state.allPhotos}
+                />
 
                 <div className={'row'} style={{ marginBottom: "5px" }}>
                     {pics}
