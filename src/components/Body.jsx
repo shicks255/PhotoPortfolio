@@ -1,6 +1,7 @@
 import React from 'react';
 import PhotoBox from './PhotoBox';
 import ModalPhotoDetails from "./ModalPhotoDetails";
+import FilterControls from "./FilterControls";
 import close from 'open-iconic/svg/x.svg';
 import $ from 'jquery/dist/jquery';
 export default class Body extends React.Component {
@@ -186,12 +187,6 @@ export default class Body extends React.Component {
                     <span className={'oi oi-x'} title={'x'} ></span>
                 </span>
             </span> : '';
-        let tagList = this.state.filteredTags.map(t => {
-            return <li data-id={t} onClick={this.clickTag}  className={'list-group-item'} key={t}>
-                {t}
-            </li>
-        });
-
 
         return (
             <div>
@@ -222,27 +217,14 @@ export default class Body extends React.Component {
                     </div>s
                 </div>
 
-                <form onSubmit={this.filterByTag}>
-                    <div className={'form-group'} onFocus={this.showTags} onBlur={this.hideTags}>
-                        <label htmlFor={''}>Tag:</label>
-                        <input onChange={this.handleChange}
-                               type={''}
-                               className={'form-control'}
-                               aria-describedby={''}
-                               value={this.state.tempTagSearch}>
-                        </input>
-                        <div id={'tagComboBox'} className={'tag-searcher invisible'}>
-                            <ul className={'list-group'}>
-                                {tagList}
-                            </ul>
-                        </div>
-                        <small id={''} className={'form-text text-muted'}>Test</small>
-                    </div>
-                    <button type={'submit'} className={'btn btn-primary'}>
-                        Filter
-                    </button>
-                </form>
-
+                <FilterControls
+                    filteredTags={this.state.filteredTags}
+                    tempTagSearch={this.state.tempTagSearch}
+                    onTagClick={this.clickTag}
+                    onFormSubmit={this.filterByTag}
+                    onFormChange={this.handleChange}
+                    onFocus={this.showTags}
+                    onBlur={this.hideTags}/>
 
                 {selectedTag}
 
