@@ -10,8 +10,6 @@ export default class Body extends React.Component {
         this.state = {
             allPhotos: [],
             photosToDisplay: [],
-            modalPhoto: undefined,
-            showDetails: false,
             allTags: [],
             loading: true
         }
@@ -23,7 +21,6 @@ export default class Body extends React.Component {
         this.closeModal = this.closeModal.bind(this);
         this.carouselLeft = this.carouselLeft.bind(this);
         this.carouselRight = this.carouselRight.bind(this);
-        this.togglePhotoInfo = this.togglePhotoInfo.bind(this);
         this.filter = this.filter.bind(this);
     }
 
@@ -33,17 +30,22 @@ export default class Body extends React.Component {
     }
 
     filter(tag) {
-        if (tag) {
-            let photosToDisplay = this.state.allPhotos.filter( photo => {
-                return photo.tags.map( tag => tag.name.toLowerCase()).includes(tag.toLowerCase())
-            }).map((t,i) => {
+        let photosToDisplay;
+        if (tag == '')
+            photosToDisplay = this.state.allPhotos;
+        else {
+            photosToDisplay = this.state.allPhotos.filter(photo =>
+            {
+                return photo.tags.map(tag => tag.name.toLowerCase()).includes(tag.toLowerCase())
+            }).map((t, i) =>
+            {
                 t.num = i;
                 return t
             });
-            this.setState({
-                photosToDisplay: photosToDisplay
-            });
         }
+        this.setState({
+            photosToDisplay: photosToDisplay
+        });
     }
 
     carouselLeft() {
@@ -62,6 +64,9 @@ export default class Body extends React.Component {
 
     closeModal() {
         $( '.modal' ).modal('toggle');
+        this.setState({
+            modalPhoto: undefined
+        });
     }
 
     doModal(photo) {
@@ -80,12 +85,6 @@ export default class Body extends React.Component {
             .attr('alt', photo.name);
 
         this.setState({ modalPhoto: photo })
-    }
-
-    togglePhotoInfo() {
-        this.setState({
-            showDetails: !this.state.showDetails
-        });
     }
 
     getAllPhotos() {
@@ -126,7 +125,6 @@ export default class Body extends React.Component {
                 key={x.fileName}
                 clickFunction={this.doModal}
                 photo={x}
-                showDetails={this.state.showDetails}
                 togglePhotoDetails={this.togglePhotoInfo}>
             </PhotoBox>
         });
@@ -138,8 +136,6 @@ export default class Body extends React.Component {
                     carouselLeft={this.carouselLeft}
                     carouselRight={this.carouselRight}
                     modalPhoto={this.state.modalPhoto}
-                    showDetails={this.state.showDetails}
-                    togglePhotoInfo={this.togglePhotoInfo}
                 />
 
                 <FilterControls

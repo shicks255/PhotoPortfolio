@@ -68,8 +68,16 @@ button.close {
   background-color: red;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .src-only {
   margin-left: 5px;
+}
+
+.filterControls {
+  background-color: white;
 }
 
 .modal-dialog {

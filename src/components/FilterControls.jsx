@@ -12,6 +12,8 @@ export default class FilterControls extends React.Component {
 
         this.onFormChange = this.onFormChange.bind(this);
         this.clickTag = this.clickTag.bind(this);
+        this.hideTags = this.hideTags.bind(this);
+        this.clearTag = this.clearTag.bind(this);
     }
 
     showTags() {
@@ -39,33 +41,45 @@ export default class FilterControls extends React.Component {
         this.props.onTagClick(tag);
     }
 
+    clearTag() {
+        this.setState({
+            tempTagSearch: '',
+            tagToSearch: ''
+        });
+        this.props.onTagClick('');
+    }
+
     render()
     {
         let tags = this.props.allTags
             .filter(t => t.toLowerCase().includes(this.state.tempTagSearch.toLowerCase()));
 
         let tagList = tags.map(t => {
-            return <li data-id={t} onClick={this.clickTag}  className={'list-group-item'} key={t}>
+            return <li data-id={t} onClick={this.clickTag}  className={'list-group-item pointer'} key={t}>
                 {t}
             </li>
         });
 
         let selectedTag = this.state.tagToSearch.length > 0 ?
             <span>
-                Photos tagged with:
-                <span href={'#'} className={'badge badge-pill badge-primary'}>
-                    {this.state.tagToSearch}&nbsp;
-                    <span className={'oi oi-x'} title={'x'} ></span>
-                </span>
+                <h2>
+                    Currently showing photos tagged with
+                    <span href={'#'} className={'badge badge-pill badge-primary'}>
+                        {this.state.tagToSearch}&nbsp;
+                        <span onClick={this.clearTag} className={'oi oi-x pointer'} title={'x'} ></span>
+                    </span>
+                </h2>
             </span> : '';
 
         const form =
-            <div>
+            <div className={'filterControls'}>
+                {selectedTag}
                 <form>
                     <div className={'form-group'} onFocus={this.showTags} onBlur={this.hideTags}>
-                        <label htmlFor={''}>Tag:</label>
-                        <input onChange={this.onFormChange}
-                               type={''}
+                        <label htmlFor={'tagToSearch'}>Search for a photo Tag:</label>
+                        <input id={'tagToSearch'}
+                               onChange={this.onFormChange}
+                               type={'text'}
                                className={'form-control'}
                                aria-describedby={''}
                                value={this.state.tempTagSearch}>
@@ -75,13 +89,8 @@ export default class FilterControls extends React.Component {
                                 {tagList}
                             </ul>
                         </div>
-                        <small id={''} className={'form-text text-muted'}>Test</small>
                     </div>
-                    <button type={'submit'} className={'btn btn-primary'}>
-                        Filter
-                    </button>
                 </form>
-                {selectedTag}
             </div>
         return form;
     }
