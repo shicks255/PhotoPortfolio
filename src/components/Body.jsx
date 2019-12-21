@@ -88,7 +88,10 @@ export default class Body extends React.Component {
     }
 
     getAllPhotos() {
-        return (fetch("/image")
+        return (
+            fetch("http://localhost:8585/image", {
+                mode: 'no-cors'
+            })
             .then(
                 res => res.json()
             )

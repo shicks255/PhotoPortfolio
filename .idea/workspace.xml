@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac4f43d3-8231-4684-926d-88f4537f628b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CarouselModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Body.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Body.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +59,7 @@
       <recent name="C:\IdeaProjects\photoportfolio\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.npm start">
+  <component name="RunManager" selected="npm.copy">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -127,6 +127,26 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="copy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="copy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="install" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="install" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="npm start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -139,6 +159,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.copy" />
+        <item itemvalue="npm.install" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -184,6 +206,7 @@
       <workItem from="1576381194240" duration="9516000" />
       <workItem from="1576550955834" duration="3690000" />
       <workItem from="1576623611775" duration="6358000" />
+      <workItem from="1576861394968" duration="5395000" />
     </task>
     <task id="LOCAL-00001" summary="working on photo service">
       <created>1567906476729</created>
@@ -421,22 +444,26 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1576120129604" />
-    <state width="629" height="85" key="GridCell.Tab.0.bottom" timestamp="1576622859805">
+    <state width="1402" height="163" key="GridCell.Tab.0.bottom" timestamp="1576898448902">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="629" height="85" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
-    <state width="629" height="85" key="GridCell.Tab.0.center" timestamp="1576622859805">
+    <state width="1402" height="163" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1576898448902" />
+    <state width="1402" height="163" key="GridCell.Tab.0.center" timestamp="1576898448901">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="629" height="85" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
-    <state width="629" height="85" key="GridCell.Tab.0.left" timestamp="1576622859805">
+    <state width="1402" height="163" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1576898448901" />
+    <state width="1402" height="163" key="GridCell.Tab.0.left" timestamp="1576898448901">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="629" height="85" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
-    <state width="629" height="85" key="GridCell.Tab.0.right" timestamp="1576622859805">
+    <state width="1402" height="163" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1576898448901" />
+    <state width="1402" height="163" key="GridCell.Tab.0.right" timestamp="1576898448902">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="629" height="85" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1576622859805" />
+    <state width="1402" height="163" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1576898448902" />
     <state x="461" y="166" key="SettingsEditor" timestamp="1575780307191">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -459,10 +486,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="888" height="388" key="javadoc.popup.new/0.0.1920.1050@0.0.1920.1050" timestamp="1576554643583" />
-    <state x="1005" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1576635491383">
+    <state x="1005" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1576895931555">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1005" y="243" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1576635491383" />
+    <state x="1005" y="243" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1576895931555" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
