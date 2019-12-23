@@ -71,7 +71,7 @@ export default class Body extends React.Component {
 
     doModal(photo) {
         $('#modalImage')
-            .attr('src', `/image/${photo.fileName}`)
+            .attr('src', `api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
         this.setState({ modalPhoto: photo })
@@ -81,7 +81,7 @@ export default class Body extends React.Component {
 
     setModal(photo) {
         $('#modalImage')
-            .attr('src', `/image/${photo.fileName}`)
+            .attr('src', `api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
         this.setState({ modalPhoto: photo })
@@ -89,17 +89,20 @@ export default class Body extends React.Component {
 
     getAllPhotos() {
         return (
-            fetch("http://localhost:8585/image", {
-                mode: 'no-cors'
-            })
+            fetch("api.photos.shicks255.com/image")
             .then(
-                res => res.json()
+                res => {
+                    console.log(res);
+                    res.json()
+                },
+                error => console.log(error)
             )
             .then(
                 photos => photos.map((t,i) => {
                     t.num = i;
                     return t;
-                })
+                }),
+                error => console.log(error)
             )
             .then(
                 photos => this.setState({
@@ -107,7 +110,7 @@ export default class Body extends React.Component {
                     photosToDisplay: photos,
                     loading: false
                 }),
-                error => { }
+                error => console.log(error)
             ));
     }
 
