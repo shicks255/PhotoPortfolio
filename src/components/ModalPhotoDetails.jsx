@@ -18,8 +18,10 @@ export default function ModalPhotoDetails(props)
                     <tbody>
                     <tr>
                         <td colSpan={2}>
-                            <i className={'fas fa-map-marker-alt'}></i>
-                            {props.modalPhoto.description}
+                            <i>
+                                {/*<i className={'fas fa-map-marker-alt'}></i>*/}
+                                {props.modalPhoto.description}
+                            </i>
                         </td>
                     </tr>
                     <tr>
@@ -56,6 +58,14 @@ export default function ModalPhotoDetails(props)
                         <td>
                             <i className={'fas fa-calendar-alt'}></i>
                             <b>Date taken:</b> {dateTaken.toDateString()} {dateTaken.toLocaleTimeString()}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Location
+                        </td>
+                        <td>
+                            https://goo.gl/maps/FjXFK6xEMFCpUZLWA
                         </td>
                     </tr>
                     </tbody>
