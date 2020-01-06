@@ -11,9 +11,14 @@ export default function ModalPhotoDetails(props)
         let mapBundle = '';
 
         if (props.modalPhoto.lat && props.modalPhoto.long) {
+            let lat = props.modalPhoto.lat.slice(0, props.modalPhoto.lat.length-1);
+            let lng = props.modalPhoto.long.slice(0, props.modalPhoto.long.length-1);
+
+            console.log(lat);
+            console.log(lng-180);
+
             mapBundle = <LoadScript
                 id='script-loader'
-                googleMapsApiKey='AIzaSyC_jRqgK_p6CexqFvc8zAKYFc4oobvs3-U'
             >
                 <GoogleMap
                     id='my-map'
@@ -23,8 +28,8 @@ export default function ModalPhotoDetails(props)
                     }}
                     zoom={7}
                     center={{
-                        lat: parseInt(props.modalPhoto.lat),
-                        lng: parseInt(props.modalPhoto.long)
+                        lat: parseFloat(lat),
+                        lng: parseFloat(lng-180)
                     }}
                 ></GoogleMap>
             </LoadScript>
