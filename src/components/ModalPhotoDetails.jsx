@@ -1,10 +1,34 @@
 import React from 'react';
+import {GoogleMap, LoadScript} from "@react-google-maps/api";
 
 export default function ModalPhotoDetails(props)
 {
     let content = '';
+    let g = '908-391-7530';
 
     if (props.modalPhoto) {
+
+        let mapBundle = '';
+
+        if (props.modalPhoto.lat && props.modalPhoto.long) {
+            mapBundle = <LoadScript
+                id='script-loader'
+                googleMapsApiKey='AIzaSyC_jRqgK_p6CexqFvc8zAKYFc4oobvs3-U'
+            >
+                <GoogleMap
+                    id='my-map'
+                    mapContainerStyle={{
+                        height: "400px",
+                        width: "800px"
+                    }}
+                    zoom={7}
+                    center={{
+                        lat: parseInt(props.modalPhoto.lat),
+                        lng: parseInt(props.modalPhoto.long)
+                    }}
+                ></GoogleMap>
+            </LoadScript>
+        }
 
         let tagList = props.modalPhoto.tags.map((tag, index) =>
             <span className={'badge badge-pill badge-primary'} key={index}>{tag.name}</span>
@@ -14,6 +38,7 @@ export default function ModalPhotoDetails(props)
         let dateAdded = new Date(props.modalPhoto.addedOn);
         content =
             <div>
+                {mapBundle}
                 <table border={1}>
                     <tbody>
                     <tr>
