@@ -1,5 +1,5 @@
 import React from 'react';
-import {GoogleMap, LoadScript} from "@react-google-maps/api";
+import {GoogleMap, LoadScript, Marker} from "@react-google-maps/api";
 
 export default function ModalPhotoDetails(props)
 {
@@ -15,24 +15,32 @@ export default function ModalPhotoDetails(props)
             let lng = props.modalPhoto.long.slice(0, props.modalPhoto.long.length-1);
 
             console.log(lat);
-            console.log(lng-180);
+            console.log(lng);
 
-            mapBundle = <LoadScript
-                id='script-loader'
-            >
-                <GoogleMap
-                    id='my-map'
-                    mapContainerStyle={{
-                        height: "400px",
-                        width: "800px"
-                    }}
-                    zoom={7}
-                    center={{
-                        lat: parseFloat(lat),
-                        lng: parseFloat(lng-180)
-                    }}
-                ></GoogleMap>
-            </LoadScript>
+            mapBundle =
+                <LoadScript
+                    id='script-loader'
+                    >
+                    <GoogleMap
+                        id='my-map'
+                        mapContainerStyle={{
+                            height: "400px",
+                            width: "800px"
+                        }}
+                        zoom={15}
+                        center={{
+                            lat: parseFloat(lat),
+                            lng: parseFloat(-lng)
+                        }}
+                    >
+                        <Marker
+                            position={{
+                                lat: parseFloat(lat),
+                                lng: parseFloat(-lng)
+                            }}
+                        />
+                    </GoogleMap>
+                </LoadScript>
         }
 
         let tagList = props.modalPhoto.tags.map((tag, index) =>
