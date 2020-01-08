@@ -14,13 +14,9 @@ export default function ModalPhotoDetails(props)
             let lat = props.modalPhoto.lat.slice(0, props.modalPhoto.lat.length-1);
             let lng = props.modalPhoto.long.slice(0, props.modalPhoto.long.length-1);
 
-            console.log(lat);
-            console.log(lng);
-
             mapBundle =
                 <LoadScript
-                    id='script-loader'
-                    >
+                    id='script-loader'>
                     <GoogleMap
                         id='my-map'
                         mapContainerStyle={{
@@ -31,14 +27,12 @@ export default function ModalPhotoDetails(props)
                         center={{
                             lat: parseFloat(lat),
                             lng: parseFloat(-lng)
-                        }}
-                    >
+                        }}>
                         <Marker
                             position={{
                                 lat: parseFloat(lat),
                                 lng: parseFloat(-lng)
-                            }}
-                        />
+                            }}/>
                     </GoogleMap>
                 </LoadScript>
         }
@@ -50,66 +44,64 @@ export default function ModalPhotoDetails(props)
         let dateTaken = new Date(props.modalPhoto.taken);
         let dateAdded = new Date(props.modalPhoto.addedOn);
         content =
-            <div>
-                {mapBundle}
-                <table border={1}>
-                    <tbody>
-                    <tr>
-                        <td colSpan={2}>
-                            <i>
-                                {/*<i className={'fas fa-map-marker-alt'}></i>*/}
-                                {props.modalPhoto.description}
-                            </i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i className={'fas fa-clock'}></i>
-                            <b>Exposure:</b> {props.modalPhoto.exposureTime}
-                        </td>
-                        <td>
-                            <i className={'fas fa-asterisk'}></i>
-                            <b>Fstop:</b> {props.modalPhoto.fnumber}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i className={'fas fa-ruler'}></i>
-                            <b>Focal length:</b> {props.modalPhoto.focalLength}
-                        </td>
-                        <td>
-                            <i className={'fas fa-cloud-sun'}></i>
-                            <b>Iso:</b> {props.modalPhoto.iso}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colSpan={2}>
-                            <i className={'fas fa-camera'}></i>
-                            <b>Lens:</b> {props.modalPhoto.lensModel}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i className={'fas fa-calendar-alt'}></i>
-                            <b>Added:</b> {dateAdded.toDateString()} {dateAdded.toLocaleTimeString()}
-                        </td>
-                        <td>
-                            <i className={'fas fa-calendar-alt'}></i>
-                            <b>Date taken:</b> {dateTaken.toDateString()} {dateTaken.toLocaleTimeString()}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Location
-                        </td>
-                        <td>
-                            https://goo.gl/maps/FjXFK6xEMFCpUZLWA
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                Tags:
-                {tagList}
+            <div className={'container-fluid'}>
+                <div className={'row'}>
+                    <div className={'col'}>
+                        {mapBundle}
+                    </div>
+                    <div className={'col'}>
+
+                        <table border={1}>
+                            <tbody>
+                            <tr>
+                                <td colSpan={2}>
+                                    <i>
+                                        {props.modalPhoto.description}
+                                    </i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i className={'fas fa-clock'}></i>
+                                    <b>Exposure:</b> {props.modalPhoto.exposureTime}
+                                </td>
+                                <td>
+                                    <i className={'fas fa-asterisk'}></i>
+                                    <b>Fstop:</b> {props.modalPhoto.fnumber}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i className={'fas fa-ruler'}></i>
+                                    <b>Focal length:</b> {props.modalPhoto.focalLength}
+                                </td>
+                                <td>
+                                    <i className={'fas fa-cloud-sun'}></i>
+                                    <b>Iso:</b> {props.modalPhoto.iso}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan={2}>
+                                    <i className={'fas fa-camera'}></i>
+                                    <b>Lens:</b> {props.modalPhoto.lensModel}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i className={'fas fa-calendar-alt'}></i>
+                                    <b>Added:</b> {dateAdded.toDateString()} {dateAdded.toLocaleTimeString()}
+                                </td>
+                                <td>
+                                    <i className={'fas fa-calendar-alt'}></i>
+                                    <b>Date taken:</b> {dateTaken.toDateString()} {dateTaken.toLocaleTimeString()}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        Tags:
+                        {tagList}
+                    </div>
+                </div>
             </div>
     }
     return content
