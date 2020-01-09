@@ -24,6 +24,23 @@ export default class Body extends React.Component {
         this.filter = this.filter.bind(this);
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            if (!e.repeat) {
+                if (e.keyCode === 27) {
+                    this.closeModal();
+                }
+                if (e.keyCode === 37) {
+                    this.carouselLeft();
+                }
+                if (e.keyCode === 39) {
+                    this.carouselRight();
+                }
+            }
+        });
+    }
+
     async loadPhotosAndTags() {
         var result = await this.getAllPhotos();
         this.getAllTags();
@@ -71,7 +88,8 @@ export default class Body extends React.Component {
 
     doModal(photo) {
         $('#modalImage')
-            .attr('src', `api.photos.shicks255.com/image/${photo.fileName}`)
+            .attr('src', `/image/${photo.fileName}`)
+            // .attr('src', `https://api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
         this.setState({ modalPhoto: photo })
@@ -81,7 +99,8 @@ export default class Body extends React.Component {
 
     setModal(photo) {
         $('#modalImage')
-            .attr('src', `api.photos.shicks255.com/image/${photo.fileName}`)
+            .attr('src', `/image/${photo.fileName}`)
+            // .attr('src', `https://api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
         this.setState({ modalPhoto: photo })
@@ -89,29 +108,26 @@ export default class Body extends React.Component {
 
     getAllPhotos() {
         return (
-            fetch("api.photos.shicks255.com/image")
-            .then(
-                res => {
-                    console.log(res);
-                    res.json()
-                },
-                error => console.log(error)
-            )
-            .then(
-                photos => photos.map((t,i) => {
-                    t.num = i;
-                    return t;
-                }),
-                error => console.log(error)
-            )
-            .then(
-                photos => this.setState({
-                    allPhotos: photos,
-                    photosToDisplay: photos,
-                    loading: false
-                }),
-                error => console.log(error)
-            ));
+            fetch("https://api.photos.shicks255.com/image")
+                .then(
+                    res => res.json(),
+                    error => console.log(error)
+                )
+                .then(
+                    photos => photos.map((t,i) => {
+                        t.num = i;
+                        return t;
+                    }),
+                    error => console.log(error)
+                )
+                .then(
+                    photos => this.setState({
+                        allPhotos: photos,
+                        photosToDisplay: photos,
+                        loading: false
+                    }),
+                    error => console.log(error)
+                ));
     }
 
     getAllTags() {
