@@ -26,32 +26,47 @@ export default class CarouselModal extends React.Component {
             <button type={'button'} className={'btn btn-success'} onClick={this.togglePhotoInfo}>Hide info...</button>
 
         const div =
-        <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} style={{ paddingRight: "0" }} role={'dialog'}>
-            <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
-                <div className={'modal-content'}>
-                    <div className={'modal-body'}>
-                        <button type={'button'} onClick={this.props.closeModalButton} className={'close'} aria-label={'Close'}>
-                            <span className={'oi oi-x'} title={'x'} aria-hidden={'true'}></span>
-                        </button>
-                        <div id={'carouselControls'} className={'carousel slide'}>
-                            <div className={'carousel-inner'}>
-                                <img id={'modalImage'} alt={''} width={'100%'} src={''} />
-                            </div>
-                            <a className={"carousel-control-prev"} onClick={this.props.carouselLeft} role="button" data-slide="prev">
-                                <span className={"carousel-control-prev-icon"} aria-hidden="true"></span>
-                                <span className={"sr-only"}>Previous</span>
-                            </a>
-                            <a className={"carousel-control-next"} onClick={this.props.carouselRight} role="button" data-slide="next">
-                                <span className={"carousel-control-next-icon"} aria-hidden="true"></span>
-                                <span className={"sr-only"}>Next</span>
-                            </a>
-                        </div>
-                        {details}
-                        {showDetailsButton}
+            <div id={'myModal'} className={'myModal hiddenModal'}>
+                <div className={'modalImageContainer'}>
+                    <div className={'modalLeft'}>
+                        <a onClick={this.props.carouselLeft}>
+                            <span className={"previous carousel-control-prev-icon"} aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <img id={'modalImage'} className={'modalImage'} src={''} style={{ maxWidth: "1250px" }}/>
+                    <div className={'modalRight'}>
+                        <a onClick={this.props.carouselRight}>
+                            <span className={"next carousel-control-next-icon"} aria-hidden="true"></span>
+                        </a>
                     </div>
                 </div>
-            </div>s
-        </div>
+            </div>
+        // <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} style={{ paddingRight: "0" }} role={'dialog'}>
+        //     <div className={'modal-dialog modal-xl modal-dialog-centered'} role={'document'}>
+        //         <div className={'modal-content'}>
+        //             <div className={'modal-body'}>
+        //                 <button type={'button'} onClick={this.props.closeModalButton} className={'close'} aria-label={'Close'}>
+        //                     <span className={'oi oi-x'} title={'x'} aria-hidden={'true'}></span>
+        //                 </button>
+        //                 <div id={'carouselControls'} className={'carousel slide'}>
+        //                     <div className={'carousel-inner'}>
+        //                         <img className={'img-fluid'} id={'modalImage'} alt={''} width={'100%'} src={''} />
+        //                     </div>
+        //                     <a className={"carousel-control-prev"} onClick={this.props.carouselLeft} role="button" data-slide="prev">
+        //                         <span className={"carousel-control-prev-icon"} aria-hidden="true"></span>
+        //                         <span className={"sr-only"}>Previous</span>
+        //                     </a>
+        //                     <a className={"carousel-control-next"} onClick={this.props.carouselRight} role="button" data-slide="next">
+        //                         <span className={"carousel-control-next-icon"} aria-hidden="true"></span>
+        //                         <span className={"sr-only"}>Next</span>
+        //                     </a>
+        //                 </div>
+        //                 {details}
+        //                 {showDetailsButton}
+        //             </div>
+        //         </div>
+        //     </div>s
+        // </div>
 
         return div;
     }

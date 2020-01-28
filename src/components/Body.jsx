@@ -26,19 +26,26 @@ export default class Body extends React.Component {
 
     componentDidMount() {
         document.addEventListener('keydown', (e) => {
-            e.preventDefault();
+            // e.preventDefault();
             if (!e.repeat) {
-                if (e.keyCode === 27) {
-                    this.closeModal();
-                }
-                if (e.keyCode === 37) {
-                    this.carouselLeft();
-                }
-                if (e.keyCode === 39) {
-                    this.carouselRight();
+                if (this.state.modalPhoto) {
+                    if (e.keyCode === 27)
+                        this.closeModal();
+                    if (e.keyCode === 37)
+                        this.carouselLeft();
+                    if (e.keyCode === 39)
+                        this.carouselRight();
                 }
             }
         });
+
+        /**
+        window.addEventListener("beforeunload", function(event) {
+            event.preventDefault();
+            console.log('hi');
+            event.returnValue = '';
+        });
+         */
     }
 
     async loadPhotosAndTags() {
@@ -80,7 +87,7 @@ export default class Body extends React.Component {
     }
 
     closeModal() {
-        $( '.modal' ).modal('toggle');
+        $( '#myModal' ).addClass('hiddenModal');
         this.setState({
             modalPhoto: undefined
         });
@@ -88,13 +95,14 @@ export default class Body extends React.Component {
 
     doModal(photo) {
         $('#modalImage')
+            .attr('src', '')
             .attr('src', `/image/${photo.fileName}`)
             // .attr('src', `https://api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
         this.setState({ modalPhoto: photo })
 
-        $('.modal').modal('toggle');
+        $('#myModal').removeClass('hiddenModal');
     }
 
     setModal(photo) {

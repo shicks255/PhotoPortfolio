@@ -14,18 +14,6 @@ function App() {
                 </div>
             </header>
 
-            <div className={'myModal'}>
-                <div className={'modalImageContainer'}>
-                    <div className={'modalLeft'}>
-                        <span className={"previous carousel-control-prev-icon"} aria-hidden="true"></span>
-                    </div>
-                    <img className={'modalImage'} src={'/image/frontenac.jpg'} style={{ maxWidth: "1250px" }}/>
-                    <div className={'modalRight'}>
-                        <span className={"next carousel-control-next-icon"} aria-hidden="true"></span>
-                    </div>
-                </div>
-            </div>
-
             <div className={'container'}>
                 <Body />
             </div>
