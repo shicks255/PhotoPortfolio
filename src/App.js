@@ -6,10 +6,17 @@ function App() {
   return (
     <div className="App">
       <header className="jumbotron jumbotron-fluid">
-        <div className={"container"}>
-          <h4>
-            My Photography Site
-          </h4>
+
+          <div className={'myModal'}>
+              <div className={'modalHolder'}>
+                  <img className={'modalImage'} src={'/image/frontenac.jpg'} style={{ maxWidth: "1080px" }}/>
+              </div>
+          </div>
+
+          <div className={"container"}>
+              <h4>
+                  My Photography Site
+              </h4>
         </div>
       </header>
 
