@@ -22,23 +22,29 @@ export default class CarouselModal extends React.Component {
         let details = this.state.showDetails ?
             <ModalPhotoDetails modalPhoto={this.props.modalPhoto} /> : '';
         let showDetailsButton = !this.state.showDetails ?
-            <button type={'button'} className={'btn btn-success'} onClick={this.togglePhotoInfo}>Info...</button> :
-            <button type={'button'} className={'btn btn-success'} onClick={this.togglePhotoInfo}>Hide info...</button>
+            <i className={'fas fa-info'} onClick={this.togglePhotoInfo}></i> :
+            <i className={'fas fa-times-circle'} onClick={this.togglePhotoInfo}></i>
 
         const div =
-            <div id={'myModal'} className={'myModal hiddenModal'}>
+            <div id={'myModal'} className={'myModal hidden'}>
                 <div className={'modalImageContainer'}>
-                    <div className={'modalLeft'}>
-                        <a onClick={this.props.carouselLeft}>
+                    <div className={'modalLeft'} onClick={this.props.carouselLeft}>
+                        <a className={'clickable'} onClick={this.props.carouselLeft}>
                             <span className={"previous carousel-control-prev-icon"} aria-hidden="true"></span>
                         </a>
                     </div>
                     <img id={'modalImage'} className={'modalImage'} src={''} style={{ maxWidth: "1250px" }}/>
-                    <div className={'modalRight'}>
-                        <a onClick={this.props.carouselRight}>
+                    <div className={'modalRight'} onClick={this.props.carouselRight}>
+                        <a className={'clickable'} onClick={this.props.carouselRight}>
                             <span className={"next carousel-control-next-icon"} aria-hidden="true"></span>
                         </a>
                     </div>
+                    <div className={'detailsButton'}>
+                        {showDetailsButton}
+                    </div>
+                </div>
+                <div className={'photoModalDetails'}>
+                    {details}
                 </div>
             </div>
         // <div className={'modal fade bd-example-modal-xl'} tabIndex={'-1'} style={{ paddingRight: "0" }} role={'dialog'}>

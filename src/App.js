@@ -6,7 +6,6 @@ function App() {
     return (
         <div className="App">
             <header className="jumbotron jumbotron-fluid">
-
                 <div className={"container"}>
                     <h4>
                         My Photography Site

@@ -17,7 +17,7 @@ export default class Body extends React.Component {
         this.loadPhotosAndTags()
 
         this.doModal = this.doModal.bind(this);
-        this.setModal = this.setModal.bind(this);
+        this.changeModalPhoto = this.changeModalPhoto.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.carouselLeft = this.carouselLeft.bind(this);
         this.carouselRight = this.carouselRight.bind(this);
@@ -39,6 +39,11 @@ export default class Body extends React.Component {
             }
         });
 
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'myModal')
+                this.closeModal();
+        });
+
         /**
         window.addEventListener("beforeunload", function(event) {
             event.preventDefault();
@@ -49,13 +54,13 @@ export default class Body extends React.Component {
     }
 
     async loadPhotosAndTags() {
-        var result = await this.getAllPhotos();
+        await this.getAllPhotos();
         this.getAllTags();
     }
 
     filter(tag) {
         let photosToDisplay;
-        if (tag == '')
+        if (tag === '')
             photosToDisplay = this.state.allPhotos;
         else {
             photosToDisplay = this.state.allPhotos.filter(photo =>
@@ -75,22 +80,23 @@ export default class Body extends React.Component {
     carouselLeft() {
         if (this.state.modalPhoto.num > 0) {
             let photo = this.state.photosToDisplay.find((t) => t.num === this.state.modalPhoto.num-1)
-            this.setModal(photo);
+            this.changeModalPhoto(photo);
         }
     }
 
     carouselRight() {
         if (this.state.modalPhoto.num < this.state.photosToDisplay.length-1) {
             let photo = this.state.photosToDisplay.find((t) => t.num === this.state.modalPhoto.num+1)
-            this.setModal(photo);
+            this.changeModalPhoto(photo);
         }
     }
 
     closeModal() {
-        $( '#myModal' ).addClass('hiddenModal');
+        $( '#myModal' ).addClass('hidden');
         this.setState({
             modalPhoto: undefined
         });
+        $('body').removeClass('dontOverflow');
     }
 
     doModal(photo) {
@@ -100,16 +106,19 @@ export default class Body extends React.Component {
             // .attr('src', `https://api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
+        $('body').addClass('dontOverflow');
+
         this.setState({ modalPhoto: photo })
 
-        $('#myModal').removeClass('hiddenModal');
+        $('#myModal').removeClass('hidden');
     }
 
-    setModal(photo) {
+    changeModalPhoto(photo) {
         $('#modalImage')
             .attr('src', `/image/${photo.fileName}`)
             // .attr('src', `https://api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
+
 
         this.setState({ modalPhoto: photo })
     }
