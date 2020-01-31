@@ -4,7 +4,6 @@ import {GoogleMap, LoadScript, Marker} from "@react-google-maps/api";
 export default function ModalPhotoDetails(props)
 {
     let content = '';
-    let g = '908-391-7530';
 
     if (props.modalPhoto) {
 
@@ -19,7 +18,7 @@ export default function ModalPhotoDetails(props)
             mapBundle =
                 <LoadScript
                     id='script-loader'
-                    >
+                    googleMapsApiKey='AIzaSyC_jRqgK_p6CexqFvc8zAKYFc4oobvs3-U'>
                     <GoogleMap
                         id='my-map'
                         mapContainerStyle={{
@@ -47,7 +46,7 @@ export default function ModalPhotoDetails(props)
         let dateTaken = new Date(props.modalPhoto.taken);
         let dateAdded = new Date(props.modalPhoto.addedOn);
         content =
-            <div className={'container-fluid'}>
+            <div id={'modalDetails'} className={'container-fluid'}>
                 <div className={'row justify-content-center'}>
                     <div className={mapColClassName}>
                         {mapBundle}

@@ -15,6 +15,17 @@ export default class CarouselModal extends React.Component {
     togglePhotoInfo() {
         this.setState({
             showDetails: !this.state.showDetails
+        },() => {
+            if (!this.state.showDetails) {
+                document.getElementById('root').scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+            if (this.state.showDetails) {
+                document.getElementById('modalDetails').scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
         });
     }
 
