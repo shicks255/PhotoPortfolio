@@ -92,17 +92,32 @@ export default function ModalPhotoDetails(props)
                             <tr>
                                 <td>
                                     <i className={'fas fa-calendar-alt'}></i>&nbsp;
-                                    <b>Added:</b> {dateAdded.toDateString()} {dateAdded.toLocaleTimeString()}
+                                    <b>Added:</b> {dateAdded.toLocaleDateString('en-US', {
+                                    weekday: 'short',
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                })}
                                 </td>
                                 <td>
                                     <i className={'fas fa-calendar-alt'}></i>&nbsp;
-                                    <b>Date taken:</b> {dateTaken.toDateString()} {dateTaken.toLocaleTimeString()}
+                                    <b>Date taken:</b> {dateTaken.toLocaleDateString('en-US', {
+                                    weekday: 'short',
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                })}
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                         Tags:
                         {tagList}
+                        <br/>
                     </div>
                 </div>
             </div>

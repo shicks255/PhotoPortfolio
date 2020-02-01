@@ -86,7 +86,10 @@ body {
 .photoModalDetails {
   background-color: white;
 }
-
+.detailsButton i {
+ color: white;
+  cursor: pointer;
+}
 
 .clickable {
   cursor: pointer;
@@ -139,7 +142,7 @@ button.close {
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
   border-radius: 50px;
-  background-color: red;
+  /*background-color: red;*/
 }
 
 .pointer {
