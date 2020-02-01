@@ -118,6 +118,7 @@ export default function ModalPhotoDetails(props)
                         Tags:
                         {tagList}
                         <br/>
+                        <br/>
                     </div>
                 </div>
             </div>

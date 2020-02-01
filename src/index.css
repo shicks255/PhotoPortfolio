@@ -162,6 +162,10 @@ code {
     monospace;
 }
 
+#my-map {
+  margin: auto;
+}
+
 .card{
   border: 0;
 }
