@@ -44,6 +44,30 @@ export default class Body extends React.Component {
                 this.closeModal();
         });
 
+        let startCoords = {};
+        const imageHolder = document.getElementById('modalImage');
+        imageHolder.addEventListener('touchstart', (e) => {
+            startCoords = e.changedTouches[0];
+            startCoords.startTime = new Date().getTime();
+            e.preventDefault();
+        });
+        imageHolder.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            var touchObj = e.changedTouches[0];
+            const distanceX = Math.abs(touchObj.pageX - startCoords.pageX);
+            const distanceY = Math.abs(touchObj.pageY - startCoords.pageY);
+            const elapsed = new Date().getTime() - startCoords.startTime;
+            if (elapsed <= 200)
+                if (distanceX >= 100 && distanceY < 100) {
+                    if (startCoords.pageX > touchObj.pageX)
+                        this.carouselRight();
+                    else
+                        this.carouselLeft();
+                }
+            if (distanceY > 100 && distanceX < 100)
+                this.closeModal();
+        });
+
         /**
         window.addEventListener("beforeunload", function(event) {
             event.preventDefault();
@@ -125,7 +149,8 @@ export default class Body extends React.Component {
 
     getAllPhotos() {
         return (
-            fetch("https://api.photos.shicks255.com/image")
+            // fetch("https://api.photos.shicks255.com/image")
+            fetch("/image")
                 .then(
                     res => res.json(),
                     error => console.log(error)

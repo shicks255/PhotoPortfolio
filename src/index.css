@@ -67,12 +67,7 @@ body {
 .modalRight, .modalLeft {
   transition: background-color 0.15s ease-in;
 }
-.modalRight:hover {
-  background-image: linear-gradient(to right, rgba(81,87,85,0), rgba(81,87,85,.8));
-}
-.modalLeft:hover {
-  background-image: linear-gradient(to left, rgba(81,87,85,0), rgba(81,87,85,.8));
-}
+
 .previous{
   position: relative;
   top: 50%;
@@ -172,4 +167,13 @@ code {
 
 body {
   background-color: #282c34;
+}
+
+@media only screen and (min-width: 600px) {
+  .modalRight:hover {
+    background-image: linear-gradient(to right, rgba(81,87,85,0), rgba(81,87,85,.8));
+  }
+  .modalLeft:hover {
+    background-image: linear-gradient(to left, rgba(81,87,85,0), rgba(81,87,85,.8));
+  }
 }
