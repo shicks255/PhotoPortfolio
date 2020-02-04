@@ -26,7 +26,7 @@ export default class Body extends React.Component {
 
     componentDidMount() {
         document.addEventListener('keydown', (e) => {
-            // e.preventDefault();
+            e.preventDefault();
             if (!e.repeat) {
                 if (this.state.modalPhoto) {
                     if (e.keyCode === 27)
@@ -127,7 +127,6 @@ export default class Body extends React.Component {
         $('#modalImage')
             .attr('src', '')
             .attr('src', `/image/${photo.fileName}`)
-            // .attr('src', `https://api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
         $('body').addClass('dontOverflow');
@@ -140,7 +139,6 @@ export default class Body extends React.Component {
     changeModalPhoto(photo) {
         $('#modalImage')
             .attr('src', `/image/${photo.fileName}`)
-            // .attr('src', `https://api.photos.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
 
@@ -149,7 +147,6 @@ export default class Body extends React.Component {
 
     getAllPhotos() {
         return (
-            // fetch("https://api.photos.shicks255.com/image")
             fetch("/image")
                 .then(
                     res => res.json(),
