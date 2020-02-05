@@ -17,8 +17,8 @@ function App() {
                 <Body />
             </div>
 
-            <footer>
-                Footer
+            <footer className={'footer'}>
+                &copy;&nbsp;<a target={'_blank'} href={'http://shicks255.com'}>Steven Hicks</a>
             </footer>
 
         </div>

@@ -26,7 +26,7 @@ export default class Body extends React.Component {
 
     componentDidMount() {
         document.addEventListener('keydown', (e) => {
-            e.preventDefault();
+            // e.preventDefault();
             if (!e.repeat) {
                 if (this.state.modalPhoto) {
                     if (e.keyCode === 27)

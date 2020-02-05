@@ -3,6 +3,7 @@ import {GoogleMap, LoadScript, Marker} from "@react-google-maps/api";
 
 export default function ModalPhotoDetails(props)
 {
+    const key = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
     let content = '';
 
     if (props.modalPhoto) {
@@ -18,13 +19,10 @@ export default function ModalPhotoDetails(props)
             mapBundle =
                 <LoadScript
                     id='script-loader'
-                    googleMapsApiKey='AIzaSyC_jRqgK_p6CexqFvc8zAKYFc4oobvs3-U'>
+                    googleMapsApiKey={key}>
                     <GoogleMap
                         id='my-map'
-                        mapContainerStyle={{
-                            height: "300px",
-                            width: "600px"
-                        }}
+                        mapContainerClassName='mapContainer'
                         zoom={15}
                         center={{
                             lat: parseFloat(lat),
