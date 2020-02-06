@@ -18,7 +18,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "copy": "copyfiles -u 1 ./build/* ./build/static/css/* ./build/static/js/* \\\\thinkcentre\\caddy\\photoService\\app\\"
+    "copyStatic": "copyfiles -u 1 ./build/static/css/* ./build/static/js/* ./build/static/media/* C:\\IdeaProjects\\PhotoService\\src\\main\\resources\\static\\",
+    "copyFiles": "copyfiles -u 1 ./build/* C:\\IdeaProjects\\PhotoService\\src\\main\\resources\\static\\",
+    "copy": "npm run copyStatic & npm run copyFiles"
   },
   "proxy": "http://localhost:8585",
   "eslintConfig": {
