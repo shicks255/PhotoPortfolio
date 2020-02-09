@@ -49,10 +49,10 @@ export default class Body extends React.Component {
         imageHolder.addEventListener('touchstart', (e) => {
             startCoords = e.changedTouches[0];
             startCoords.startTime = new Date().getTime();
-            e.preventDefault();
+            // e.preventDefault();
         });
         imageHolder.addEventListener('touchend', (e) => {
-            e.preventDefault();
+            // e.preventDefault();
             var touchObj = e.changedTouches[0];
             const distanceX = Math.abs(touchObj.pageX - startCoords.pageX);
             const distanceY = Math.abs(touchObj.pageY - startCoords.pageY);
@@ -64,8 +64,8 @@ export default class Body extends React.Component {
                     else
                         this.carouselLeft();
                 }
-            if (distanceY > 100 && distanceX < 100)
-                this.closeModal();
+            // if (distanceY > 100 && distanceX < 100)
+            //     this.closeModal();
         });
 
         /**
@@ -82,19 +82,22 @@ export default class Body extends React.Component {
         this.getAllTags();
     }
 
-    filter(tag) {
+    photoTagsContainFilterTags(photo, ftags) {
+        const photoTags = photo.tags.map(tag => tag.name.toLowerCase());
+        return ftags.every(t => photoTags.includes(t.toLowerCase()));
+    }
+
+    filter(tags) {
         let photosToDisplay;
-        if (tag === '')
+        if (tags.length === 0)
             photosToDisplay = this.state.allPhotos;
         else {
-            photosToDisplay = this.state.allPhotos.filter(photo =>
-            {
-                return photo.tags.map(tag => tag.name.toLowerCase()).includes(tag.toLowerCase())
-            }).map((t, i) =>
-            {
-                t.num = i;
-                return t
-            });
+            photosToDisplay = this.state.allPhotos
+                .filter(photo => this.photoTagsContainFilterTags(photo, tags))
+                .map((t,i) => {
+                    t.num = i;
+                    return t;
+                });
         }
         this.setState({
             photosToDisplay: photosToDisplay
