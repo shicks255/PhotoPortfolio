@@ -30,8 +30,7 @@ export default class CarouselModal extends React.Component {
     }
 
     render() {
-        let details = this.state.showDetails ?
-            <ModalPhotoDetails modalPhoto={this.props.modalPhoto} /> : '';
+        let detailsClass = this.state.showDetails ? 'slideDown' : '';
         let showDetailsButton = !this.state.showDetails ?
             <i className={'fas fa-info'} onClick={this.togglePhotoInfo}></i> :
             <i className={'fas fa-times-circle'} onClick={this.togglePhotoInfo}></i>
@@ -58,14 +57,10 @@ export default class CarouselModal extends React.Component {
                         &nbsp;
                         &nbsp;
                         {showDetailsButton}
+                        <div className={`photoModalDetails ${detailsClass}`}>
+                            <ModalPhotoDetails modalPhoto={this.props.modalPhoto} />
+                        </div>
                     </div>
-                </div>
-                <div className={'photoModalDetails'}>
-                    {/*<div id={'mySpinner'}>*/}
-                    {/*    <i className={'fas fa-spinner fa-spin'}>*/}
-                    {/*    </i>*/}
-                    {/*</div>*/}
-                    {details}
                 </div>
             </div>
 

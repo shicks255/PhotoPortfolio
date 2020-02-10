@@ -49,10 +49,8 @@ export default class Body extends React.Component {
         imageHolder.addEventListener('touchstart', (e) => {
             startCoords = e.changedTouches[0];
             startCoords.startTime = new Date().getTime();
-            // e.preventDefault();
         });
         imageHolder.addEventListener('touchend', (e) => {
-            // e.preventDefault();
             var touchObj = e.changedTouches[0];
             const distanceX = Math.abs(touchObj.pageX - startCoords.pageX);
             const distanceY = Math.abs(touchObj.pageY - startCoords.pageY);

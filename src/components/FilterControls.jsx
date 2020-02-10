@@ -7,7 +7,7 @@ export default class FilterControls extends React.Component {
         super(props);
         this.state = {
             tempTagSearch: '',
-            tagToSearch: ''
+            tagsToSearch: [],
         }
 
         this.onFormChange = this.onFormChange.bind(this);
@@ -34,25 +34,27 @@ export default class FilterControls extends React.Component {
 
     clickTag(e) {
         let tag = e.currentTarget.dataset.id;
+        let tags = this.state.tagsToSearch;
+        tags.push(tag);
         this.setState({
             tempTagSearch: '',
-            tagToSearch: tag
+            tagsToSearch: tags,
         });
-        this.props.onTagClick(tag);
+        this.props.onTagClick(tags);
     }
 
-    clearTag() {
-        this.setState({
-            tempTagSearch: '',
-            tagToSearch: ''
-        });
-        this.props.onTagClick('');
+    clearTag(e) {
+        let tag = e.currentTarget.dataset.id;
+        this.state.tagsToSearch.splice(this.state.tagsToSearch.indexOf(tag), 1);
+
+        this.props.onTagClick(this.state.tagsToSearch);
     }
 
     render()
     {
         let tags = this.props.allTags
-            .filter(t => t.toLowerCase().includes(this.state.tempTagSearch.toLowerCase()));
+            .filter(t => t.toLowerCase().includes(this.state.tempTagSearch.toLowerCase()))
+            .filter(t => !this.state.tagsToSearch.includes(t));
 
         let tagList = tags.map(t => {
             return <li data-id={t} onClick={this.clickTag}  className={'list-group-item pointer'} key={t}>
@@ -60,14 +62,19 @@ export default class FilterControls extends React.Component {
             </li>
         });
 
-        let selectedTag = this.state.tagToSearch.length > 0 ?
+        let tagsToDisplay = this.state.tagsToSearch.map(t => {
+            return(
+                <span className={'badge badge-pill badge-primary'}>
+                    {t}&nbsp;
+                    <span data-id={t} onClick={this.clearTag} className={'oi oi-x pointer'} title={'x'} ></span>
+                </span>
+            )
+        })
+        let selectedTag = this.state.tagsToSearch.length > 0 ?
             <span>
                 <h2>
                     Currently showing photos tagged with
-                    <span href={'#'} className={'badge badge-pill badge-primary'}>
-                        {this.state.tagToSearch}&nbsp;
-                        <span onClick={this.clearTag} className={'oi oi-x pointer'} title={'x'} ></span>
-                    </span>
+                    {tagsToDisplay}
                 </h2>
             </span> : '';
 
@@ -76,7 +83,11 @@ export default class FilterControls extends React.Component {
                 {selectedTag}
                 <form>
                     <div className={'form-group'} onFocus={this.showTags} onBlur={this.hideTags}>
-                        <label htmlFor={'tagToSearch'}>Search for a photo Tag:</label>
+                        <label className={'label'} htmlFor={'tagToSearch'}>
+                            <i className={'fas fa-search'}></i>
+                            &nbsp;
+                            Search for a photo Tag:
+                        </label>
                         <input id={'tagToSearch'}
                                onChange={this.onFormChange}
                                type={'text'}
