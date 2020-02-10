@@ -64,7 +64,7 @@ export default class FilterControls extends React.Component {
 
         let tagsToDisplay = this.state.tagsToSearch.map(t => {
             return(
-                <span className={'badge badge-pill badge-primary'}>
+                <span key={t} className={'badge badge-pill badge-primary'}>
                     {t}&nbsp;
                     <span data-id={t} onClick={this.clearTag} className={'oi oi-x pointer'} title={'x'} ></span>
                 </span>
