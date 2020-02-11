@@ -50,7 +50,7 @@ header h4 {
   position: relative;
   margin: auto;
   z-index: 2000 !important;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgb(0,0,0);
 }
 .modalImage{
   transition: opacity 350ms ease-in-out;

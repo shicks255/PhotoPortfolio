@@ -22,9 +22,11 @@ export default class CarouselModal extends React.Component {
                 });
             }
             if (this.state.showDetails) {
-                document.getElementById('modalDetails').scrollIntoView({
-                    behavior: "smooth"
-                });
+                setTimeout(() => {
+                    document.getElementById('modalDetails').scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }, 650);
             }
         });
     }
