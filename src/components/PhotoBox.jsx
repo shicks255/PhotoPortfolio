@@ -20,7 +20,7 @@ export default class PhotoBox extends React.Component
                         className={'card-img-top'}
                         alt=''
                         src={this.state.afterLoad}/>
-                    <div onClick={() => this.props.clickFunction(this.props.photo)} style={{cursor: 'pointer'}} className={'card-img-overlay'}>
+                    <div onClick={() => this.props.clickFunction(this.props.photo)} className={'card-img-overlay pointer'}>
                         <div>
                             <h4><span className={'badge badge-secondary cardTitle'}>{this.props.photo.title}</span></h4>
                         </div>

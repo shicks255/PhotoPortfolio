@@ -8,36 +8,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #282c34;
 }
-
-.cardTitle {
-  font-family: "Brush Script MT"
+/*Added to body during modal popup, so that no scroll bar appears on body*/
+.dontOverflow {
+  overflow: hidden
 }
 
 header h4 {
   font-family: "Brush Script MT";
 }
+.jumbotron {
+  padding: 2rem !important;
+}
 
+.cardTitle {
+  font-family: "Brush Script MT"
+}
 .card{
   -webkit-box-shadow: 4px 4px 66px -24px rgba(61,13,61,1);
   -moz-box-shadow: 4px 4px 66px -24px rgba(61,13,61,1);
   box-shadow: 4px 4px 66px -24px rgba(61,13,61,1);
-}
-
-.dontOverflow {
-  overflow: hidden
+  border-radius: 1px;
 }
 
 /*Stuff for Modal */
 .hidden {
   visibility: hidden;
 }
-.hiddenModal * .modalImage {
-  opacity: 0;
-}
+/*.hiddenModal * .modalImage {*/
+/*  opacity: 0;*/
+/*}*/
 .myModal {
   z-index: 1;
   position: fixed;
-  display: block;
   text-align: center;
   width: 100%;
   height: 100%;
@@ -47,38 +49,20 @@ header h4 {
   overflow: auto;
 }
 .modalImageContainer {
-  position: relative;
-  margin: auto;
-  z-index: 2000 !important;
-  background-color: rgb(0,0,0);
+  display: flex;
 }
 .modalImage{
-  transition: opacity 350ms ease-in-out;
-  opacity: 1;
+  /*flex: 3 0 100%;*/
+  /*transition: opacity 350ms ease-in-out;*/
+  /*opacity: 1;*/
   width: 100%;
-  height: auto;
-  z-index: 3 !important;
+  /*height: auto;*/
+  /*z-index: 3 !important;*/
 }
 
-.modalLeft{
-  width: 15%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
+.modalLeft, .modalRight{
+  width: 50%;
   background-color: black;
-}
-.modalRight{
-  width: 15%;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  background-color: black;
-}
-.modalRight, .modalLeft {
-  transition: background-color 0.15s ease-in;
-  z-index: 3 !important;
 }
 
 .previous{
@@ -91,20 +75,8 @@ header h4 {
   top: 50%;
   left: 15%;
 }
-.photoModalDetails {
-  background-color: white;
-  width: 100%;
-  font-family: "Helvetica Neue";
-  position:absolute;
-  top:-500px;
-  z-index: -50;
-  transition: top 750ms;
-  transition-timing-function: ease-in-out;
-}
-.slideDown {
-  top:100%;
-}
 .detailsButton {
+  position: relative;
   background-color: black;
 }
 .detailsButton i {
@@ -114,40 +86,21 @@ header h4 {
 #modalDetails i {
   color: black;
 }
-
-.clickable {
-  cursor: pointer;
+.photoModalDetails {
+  background-color: white;
+  width: 100%;
+  position:absolute;
+  top:-900px;
+  z-index: -50;
+  transition: top 750ms;
+  transition-timing-function: ease-in-out;
+}
+.slideDown {
+  top:100%;
 }
 
 .col-lg-4 {
   padding-bottom: 15px;
-}
-
-.close {
-  color: aliceblue;
-}
-
-.modal {
-  padding-right: 0 !important;
-}
-
-.modal-body {
-  padding: .2rem;
-}
-
-#carouselControls {
-  margin-top: -.2rem;
-}
-
-.carousel-inner {
-  top: -1.5rem;
-}
-
-.close {
-  position: sticky;
-  top: 5%;
-  right: 5%;
-  z-index: 5000;
 }
 
 .tag-searcher {
@@ -159,43 +112,22 @@ header h4 {
   background-color: grey;
 }
 
-button.close {
-  background-color: blue !important;
-  border-radius: 50px;
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-  border-radius: 50px;
-  /*background-color: red;*/
-}
-
 .pointer {
   cursor: pointer;
-}
-
-.src-only {
-  margin-left: 5px;
 }
 
 .filterControls {
   background-color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 #my-map {
   margin: auto;
   margin-top: 15px;
 }
-
-.card{
-  border: 0;
-}
-
-body {
+.mapContainer {
+  height: 300px;
+  width: 100%;
+  min-width: 300px;
 }
 
 footer {
@@ -206,15 +138,8 @@ footer {
   font-family: "Helvetica Neue";
 }
 
-.mapContainer {
-  height: 300px;
-  width: 100%;
-  min-width: 300px;
-}
-
 .label {
   padding: 5px;
-  vertical-align: center;
   margin-bottom: 0;
 }
 .tag-searcher {
@@ -222,8 +147,26 @@ footer {
   overflow: auto;
 }
 
-.jumbotron {
-  padding: 2rem !important;
+@media only screen and (max-width: 1240px) {
+  .modalImageContainer {
+    position: relative;
+    margin: auto;
+    z-index: 2000 !important;
+    display: inline-block;
+  }
+  .modalRight, .modalLeft {
+    width: 15%;
+    height: 100%;
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+  }
+  .modalRight {
+    right: 0;
+  }
+  .modalLeft {
+    left: 0;
+  }
 }
 
 @media only screen and (min-width: 600px) {

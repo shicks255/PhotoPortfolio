@@ -52,16 +52,16 @@ export default class CarouselModal extends React.Component {
                             <span className={"next carousel-control-next-icon"} aria-hidden="true"></span>
                         </a>
                     </div>
-                    <div className={'detailsButton'}>
-                        {upArrowToClose}
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        {showDetailsButton}
-                        <div className={`photoModalDetails ${detailsClass}`}>
-                            <ModalPhotoDetails modalPhoto={this.props.modalPhoto} />
-                        </div>
+                </div>
+                <div className={'detailsButton'}>
+                    {upArrowToClose}
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    {showDetailsButton}
+                    <div className={`photoModalDetails ${detailsClass}`}>
+                        <ModalPhotoDetails modalPhoto={this.props.modalPhoto} />
                     </div>
                 </div>
             </div>
