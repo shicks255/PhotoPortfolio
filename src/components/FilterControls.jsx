@@ -86,7 +86,7 @@ export default class FilterControls extends React.Component {
                         <label className={'label'} htmlFor={'tagToSearch'}>
                             <i className={'fas fa-search'}></i>
                             &nbsp;
-                            Search for a photo Tag:
+                            Search for photos by a tag:
                         </label>
                         <input id={'tagToSearch'}
                                onChange={this.onFormChange}

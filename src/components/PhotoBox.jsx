@@ -6,7 +6,6 @@ export default class PhotoBox extends React.Component
     {
         super(props);
         this.state = {
-            pictureName: '/image/' + props.photo.fileName + '/tiny/',
             afterLoad: 'image/' + props.photo.fileName + '/thumbnail/',
         }
     }
