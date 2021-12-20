@@ -127,7 +127,7 @@ export default class Body extends React.Component {
     doModal(photo) {
         $('#modalImage')
             .attr('src', '')
-            .attr('src', `/image/${photo.fileName}`)
+            .attr('src', `https://photosapi.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
         $('body').addClass('dontOverflow');
@@ -139,7 +139,7 @@ export default class Body extends React.Component {
 
     changeModalPhoto(photo) {
         $('#modalImage')
-            .attr('src', `/image/${photo.fileName}`)
+            .attr('src', `https://photosapi.shicks255.com/image/${photo.fileName}`)
             .attr('alt', photo.name);
 
 
