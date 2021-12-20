@@ -148,7 +148,7 @@ export default class Body extends React.Component {
 
     getAllPhotos() {
         return (
-            fetch("/image")
+            fetch("https://photosapi.shicks255.com/image")
                 .then(
                     res => res.json(),
                     error => console.log(error)
