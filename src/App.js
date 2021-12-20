@@ -18,7 +18,7 @@ function App() {
             </div>
 
             <footer className={'footer'}>
-                &copy;&nbsp;<a target={'_blank'} href={'http://shicks255.com'}>Steven Hicks</a>
+                &copy;&nbsp;<a target={'_blank'} rel="noopener" href={'https://shicks255.com'}>Steven Hicks</a>
             </footer>
 
         </div>

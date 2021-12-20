@@ -42,12 +42,14 @@ export default class CarouselModal extends React.Component {
             <div id={'myModal'} className={'myModal hidden'}>
                 <div className={'modalImageContainer'}>
                     <div className={'modalLeft'} onClick={this.props.carouselLeft}>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <a className={'clickable'} onClick={this.props.carouselLeft}>
                             <span className={"previous carousel-control-prev-icon"} aria-hidden="true"></span>
                         </a>
                     </div>
                     <img id={'modalImage'} className={'modalImage'} src={''} style={{ maxWidth: "1250px" }}/>
                     <div className={'modalRight'} onClick={this.props.carouselRight}>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <a className={'clickable'} onClick={this.props.carouselRight}>
                             <span className={"next carousel-control-next-icon"} aria-hidden="true"></span>
                         </a>
