@@ -1,0 +1,78 @@
+{
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest", "import"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "useJSXTextNode": true
+    },
+    "project": "./tsconfig.json",
+    "sourceType": "module",
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "rules":{
+    "linebreak-style":"off",
+    "jest/no-disabled-tests":"off",
+    "react-hooks/rules-of-hooks":"error",
+    "react-hooks/exhaustive-deps":"warn",
+    "no-shadow":"off",
+    "import/no-extraneous-dependencies":["error",
+      {
+        "devDependencies":["**/*.test.tsx","./src/mocks/**","./src/setupTests.ts"]
+      }
+    ],
+    "@typescript-eslint/no-shadow":"off",
+    "@typescript-eslint/naming-convention":["error",
+      {
+        "selector":"interface",
+        "format":["PascalCase"],
+        "custom":{
+          "regex":"^I[A-Z]",
+          "match":true
+        }
+      }
+    ],
+    "prettier/prettier":[
+      "error",
+      {
+        "endOfLine":"auto"
+      }
+    ],
+    "import/extensions":"off",
+    "import/order":[
+      "error",
+      {
+        "groups":["builtin","external","internal"],
+        "pathGroups":[
+          {
+            "pattern":"react",
+            "group":"external",
+            "position":"before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes":["react"],
+        "newlines-between":"always",
+        "alphabetize":{
+          "order":"asc",
+          "caseInsensitive":true
+        }
+      }
+    ]
+  },
+  "globals": {
+    "JSX": true
+  }
+}
