@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import { usePhotos } from 'api';
 import { IPhoto } from 'models/Photo';
@@ -55,23 +55,39 @@ const Body: React.FC = () => {
     }
   }, [modalPhoto]);
 
-  const carouselLeft = () => {
+  const photosToDisplay = allPhotos
+    .filter((photo) => {
+      if (tagFilters.length === 0) {
+        return true;
+      }
+
+      if (photoTagsContainFilterTags(photo)) {
+        return true;
+      }
+      return false;
+    })
+    .map((photo, indx) => ({
+      ...photo,
+      num: indx
+    }));
+
+  const carouselLeft = useCallback(() => {
     if (modalPhoto && modalPhoto.num > 0) {
       const photo = photosToDisplay.find((t) => t.num === modalPhoto?.num - 1);
       if (photo) {
         changeModalPhoto(photo);
       }
     }
-  };
+  }, [modalPhoto, photosToDisplay]);
 
-  const carouselRight = () => {
+  const carouselRight = useCallback(() => {
     if (modalPhoto && modalPhoto.num < photosToDisplay.length - 1) {
       const photo = photosToDisplay.find((t) => t.num === modalPhoto?.num + 1);
       if (photo) {
         changeModalPhoto(photo);
       }
     }
-  };
+  }, [modalPhoto, photosToDisplay]);
 
   useEffect(() => {
     document.addEventListener('keydown', (e) => {
@@ -117,22 +133,6 @@ const Body: React.FC = () => {
     }
     return true;
   };
-
-  const photosToDisplay = allPhotos
-    .filter((photo) => {
-      if (tagFilters.length === 0) {
-        return true;
-      }
-
-      if (photoTagsContainFilterTags(photo)) {
-        return true;
-      }
-      return false;
-    })
-    .map((photo, indx) => ({
-      ...photo,
-      num: indx
-    }));
 
   const closeModal = () => {
     setModalPhoto(undefined);
