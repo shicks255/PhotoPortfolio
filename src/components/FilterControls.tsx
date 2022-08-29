@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { ITag } from 'models/Photo';
-
 interface IProps {
   allTags: string[];
   tags: string[];

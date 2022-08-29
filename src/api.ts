@@ -1,8 +1,6 @@
 import { IPhoto } from 'models/Photo';
 import { useQuery, QueryObserverResult } from 'react-query';
 
-import Body from './components/Body';
-
 function fethc(endpoint: string) {
   return fetch(endpoint)
     .then((res) => Promise.all([res.ok, res.json()]))

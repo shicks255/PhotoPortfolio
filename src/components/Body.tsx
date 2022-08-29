@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { usePhotos } from 'api';
-import { IPhoto, ITag } from 'models/Photo';
+import { IPhoto } from 'models/Photo';
 
 import CarouselModal from './CarouselModal';
 import FilterControls from './FilterControls';
@@ -55,6 +55,24 @@ const Body: React.FC = () => {
     }
   }, [modalPhoto]);
 
+  const carouselLeft = () => {
+    if (modalPhoto && modalPhoto.num > 0) {
+      const photo = photosToDisplay.find((t) => t.num === modalPhoto?.num - 1);
+      if (photo) {
+        changeModalPhoto(photo);
+      }
+    }
+  };
+
+  const carouselRight = () => {
+    if (modalPhoto && modalPhoto.num < photosToDisplay.length - 1) {
+      const photo = photosToDisplay.find((t) => t.num === modalPhoto?.num + 1);
+      if (photo) {
+        changeModalPhoto(photo);
+      }
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('keydown', (e) => {
       if (!e.repeat) {
@@ -86,7 +104,7 @@ const Body: React.FC = () => {
       // if (distanceY > 100 && distanceX < 100)
       //     this.closeModal();
     });
-  }, []);
+  }, [carouselLeft, carouselRight, modalPhoto]);
 
   if (!data || isLoading) {
     return <div>LOADING</div>;
@@ -115,24 +133,6 @@ const Body: React.FC = () => {
       ...photo,
       num: indx
     }));
-
-  const carouselLeft = () => {
-    if (modalPhoto && modalPhoto.num > 0) {
-      const photo = photosToDisplay.find((t) => t.num === modalPhoto?.num - 1);
-      if (photo) {
-        changeModalPhoto(photo);
-      }
-    }
-  };
-
-  const carouselRight = () => {
-    if (modalPhoto && modalPhoto.num < photosToDisplay.length - 1) {
-      const photo = photosToDisplay.find((t) => t.num === modalPhoto?.num + 1);
-      if (photo) {
-        changeModalPhoto(photo);
-      }
-    }
-  };
 
   const closeModal = () => {
     setModalPhoto(undefined);
