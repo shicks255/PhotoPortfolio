@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
 
 import { IPhoto } from 'models/Photo';
 
-import useClickOutside, { useClickOutsideMulti } from '../hooks/useClickOutside';
+import { useClickOutsideMulti } from '../hooks/useClickOutside';
 import ModalPhotoDetails from './ModalPhotoDetails';
 
 interface IProps {
