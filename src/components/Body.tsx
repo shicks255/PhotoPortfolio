@@ -55,6 +55,14 @@ const Body: React.FC = () => {
     }
   }, [modalPhoto]);
 
+  const photoTagsContainFilterTags = (photo: IPhoto) => {
+    const photoTags = photo.tags.map((tag) => tag.name.toLowerCase());
+    if (tagFilters.length > 0) {
+      return tagFilters.every((t) => photoTags.includes(t.toLowerCase()));
+    }
+    return true;
+  };
+
   const photosToDisplay = allPhotos
     .filter((photo) => {
       if (tagFilters.length === 0) {
@@ -125,14 +133,6 @@ const Body: React.FC = () => {
   if (!data || isLoading) {
     return <div>LOADING</div>;
   }
-
-  const photoTagsContainFilterTags = (photo: IPhoto) => {
-    const photoTags = photo.tags.map((tag) => tag.name.toLowerCase());
-    if (tagFilters.length > 0) {
-      return tagFilters.every((t) => photoTags.includes(t.toLowerCase()));
-    }
-    return true;
-  };
 
   const closeModal = () => {
     setModalPhoto(undefined);

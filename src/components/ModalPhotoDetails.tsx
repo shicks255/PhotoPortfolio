@@ -45,7 +45,7 @@ const ModalPhotoDetails: React.FC<IProps> = (props) => {
 
     const tagList = modalPhoto.tags.map((tag, index) => (
       <span className={'badge badge-pill badge-primary'} key={index}>
-        {`${tag}`}
+        {` ${tag.name} ,`}
       </span>
     ));
 
@@ -54,76 +54,66 @@ const ModalPhotoDetails: React.FC<IProps> = (props) => {
     content = (
       <div id={'modalDetails'} className={'container-fluid'}>
         <div className={'row justify-content-center'}>
-          <div className={mapColClassName}>{mapBundle}</div>
-          <div className={'col'}>
-            <table className={'table'}>
-              <tbody>
-                <tr>
-                  <td colSpan={2}>
-                    <i>
-                      <p className={'h3'}>{modalPhoto.description}</p>
-                    </i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <i className={'fas fa-clock'}></i>&nbsp;
-                    <b>Exposure:</b> {modalPhoto.exposureTime}
-                  </td>
-                  <td>
-                    <i className={'fas fa-asterisk'}></i>&nbsp;
-                    <b>Fstop:</b> {modalPhoto.fnumber}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <i className={'fas fa-ruler'}></i>&nbsp;
-                    <b>Focal length:</b> {modalPhoto.focalLength}
-                  </td>
-                  <td>
-                    <i className={'fas fa-cloud-sun'}></i>&nbsp;
-                    <b>Iso:</b> {modalPhoto.iso}
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2}>
-                    <i className={'fas fa-camera'}></i>&nbsp;
-                    <b>Lens:</b> {modalPhoto.lensModel}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <i className={'fas fa-calendar-alt'}></i>&nbsp;
-                    <b>Added:</b>{' '}
-                    {dateAdded.toLocaleDateString('en-US', {
-                      weekday: 'short',
-                      day: '2-digit',
-                      month: '2-digit',
-                      year: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit'
-                    })}
-                  </td>
-                  <td>
-                    <i className={'fas fa-calendar-alt'}></i>&nbsp;
-                    <b>Date taken:</b>{' '}
-                    {dateTaken.toLocaleDateString('en-US', {
-                      weekday: 'short',
-                      day: '2-digit',
-                      month: '2-digit',
-                      year: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit'
-                    })}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            Tags:
-            {tagList}
-            <br />
-            <br />
+          <div className="p-4 font-bold text-2xl">
+            <p>{modalPhoto.title}</p>
           </div>
+          <div>
+            <i>
+              <p className={'h3'}>{modalPhoto.description}</p>
+            </i>
+          </div>
+          <div className="text-left ml-4 mr-3">
+            <div className="mt-8 p-2 border-b-2">
+              <i className={'fas fa-clock mr-3'}></i>
+              <b>Exposure:</b> {modalPhoto.exposureTime}
+            </div>
+            <div className="p-2 border-b-2">
+              <i className={'fas fa-asterisk mr-3'}></i>
+              <b>Fstop:</b> {modalPhoto.fnumber}
+            </div>
+            <div className="p-2 border-b-2">
+              <i className={'fas fa-ruler mr-3'}></i>
+              <b>Focal length:</b> {modalPhoto.focalLength}
+            </div>
+            <div className="p-2 border-b-2">
+              <i className={'fas fa-cloud-sun mr-3'}></i>
+              <b>Iso:</b> {modalPhoto.iso}
+            </div>
+            <div className="p-2 border-b-2">
+              <i className={'fas fa-camera mr-3'}></i>
+              <b>Lens:</b> {modalPhoto.lensModel}
+            </div>
+            <div className="p-2 border-b-2">
+              <i className={'fas fa-calendar-alt mr-3'}></i>
+              <b>Added:</b>{' '}
+              {dateAdded.toLocaleDateString('en-US', {
+                weekday: 'short',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              })}
+            </div>
+            <div className="p-2 border-b-2">
+              <i className={'fas fa-calendar-alt mr-3'}></i>
+              <b>Date taken:</b>{' '}
+              {dateTaken.toLocaleDateString('en-US', {
+                weekday: 'short',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              })}
+            </div>
+          </div>
+          <br />
+          Tags:
+          <br />
+          {tagList}
+          <br />
+          <div className={mapColClassName}>{mapBundle}</div>
         </div>
       </div>
     );

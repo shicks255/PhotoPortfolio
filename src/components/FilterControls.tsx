@@ -68,7 +68,7 @@ const FilterControls: React.FC<IProps> = (props: IProps) => {
   const selectedTag =
     tags.length > 0 ? (
       <span>
-        <h2>Currently showing photos tagged with</h2>
+        <h2 className="p-2 font-semibold">Currently showing photos tagged with</h2>
         <div className="mt-1 mb-2 p-2">{tagsToDisplay}</div>
       </span>
     ) : (
@@ -76,10 +76,9 @@ const FilterControls: React.FC<IProps> = (props: IProps) => {
     );
 
   return (
-    <div className={'filterControls bg-violet-200'}>
-      {selectedTag}
+    <div className={'bg-violet-200'}>
       <form>
-        <div className={'form-group relative'}>
+        <div className={'form-group relative p-2'}>
           <label className={'p-2 font-bold mb-0 text-slate-800'}>
             <i className={'fas fa-search mr-2'}></i>
             Search for photos by a tag
@@ -102,6 +101,7 @@ const FilterControls: React.FC<IProps> = (props: IProps) => {
             {tagList}
           </ul>
         </div>
+        {selectedTag}
       </form>
     </div>
   );

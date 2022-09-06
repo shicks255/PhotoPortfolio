@@ -16,6 +16,10 @@ body {
   overflow: hidden
 }
 
+.penis {
+  min-height: calc(100vh - 184px);
+}
+
 .image-placeholder {
   background-color: #f6f6f6;
   background-size: cover;
@@ -69,19 +73,15 @@ header h4 {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,.8) !important;
+  background-color: rgba(0,0,0,.99) !important;
   overflow: auto;
 }
 .modalImageContainer {
   display: flex;
 }
 .modalImage{
-  /*flex: 3 0 100%;*/
-  /*transition: opacity 350ms ease-in-out;*/
-  /*opacity: 1;*/
   width: 100%;
-  /*height: auto;*/
-  /*z-index: 3 !important;*/
+  height: calc(100vh - 400px);
 }
 
 .modalLeft, .modalRight{
@@ -146,14 +146,6 @@ header h4 {
   min-width: 300px;
 }
 
-footer {
-  text-align: center;
-  padding: 3rem 1.5rem 6rem;
-  background-color: black;
-  color: indianred;
-  font-family: "Helvetica Neue";
-}
-
 .tag-searcher {
   max-height: 400px;
   overflow: auto;
@@ -166,7 +158,7 @@ footer {
     z-index: 2000 !important;
     display: inline-block;
   }
-  .modalRight, .modalLeft {
+  .modalRight, .modalLeft { 
     width: 15%;
     height: 100%;
     position: absolute;
@@ -187,5 +179,20 @@ footer {
   }
   .modalLeft:hover {
     background-image: linear-gradient(to left, rgba(81,87,85,0), rgba(81,87,85,.8));
+  }
+}
+
+@media only screen and (max-height: 1000px) {
+  .modalImage{
+    /* width: 100%; */
+    height: calc(100vh - 100px);
+  }
+}
+
+@media only screen and (max-height: 484px) {
+  .modalImage{
+    /* width: 100%; */
+    /* width: calc(100vh - 5px); */
+    height: calc(100vh - 15px);
   }
 }

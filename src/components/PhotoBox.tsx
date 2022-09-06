@@ -34,7 +34,11 @@ const PhotoBox: React.FC<IProps> = ({ photo, clickFunction }: IProps) => {
           onClick={() => clickFunction(photo)}
           className={'card-img-overlay w-full h-full cursor-pointer absolute top-0 p-3'}
         >
-          {smallLoaded && <span className={'cardTitle text-white'}>{photo.title}</span>}
+          {smallLoaded && (
+            <span className={'cardTitle bg-slate-500 rounded-full px-3 py-1 text-white'}>
+              {photo.title}
+            </span>
+          )}
         </div>
       </div>
     </div>
