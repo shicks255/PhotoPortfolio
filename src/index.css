@@ -185,7 +185,7 @@ header h4 {
 @media only screen and (max-height: 1000px) {
   .modalImage{
     /* width: 100%; */
-    height: calc(100vh - 100px);
+    height: calc(100vh - 200px);
   }
 }
 
