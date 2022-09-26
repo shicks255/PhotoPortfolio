@@ -4,9 +4,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { usePhotos } from 'api';
 import { IPhoto } from 'models/Photo';
 
-import CarouselModal from './CarouselModal';
+import CarouselModal from './carousel/CarouselModal';
 import FilterControls from './FilterControls';
-import Photos from './Photos';
+import Photos from './photo/Photos';
 
 interface ICords extends Omit<Touch, 'target'> {
   startTime?: number;

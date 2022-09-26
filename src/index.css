@@ -74,14 +74,31 @@ header h4 {
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,.99) !important;
-  overflow: auto;
+  margin-right: 0;
 }
 .modalImageContainer {
-  display: flex;
+  margin-right: 0px;
+  transition: margin-right 0.5s ease-in-out;
 }
+
+.modalImageContainer.showDetails {
+  margin-right: 24em;
+}
+
+.modalDetails {
+  width: 24em;
+  transition: right 0.5s ease-in-out;
+  right: -24em;
+}
+
+.modalDetails.showDetails {
+  right: 0;
+}
+
 .modalImage{
-  width: 100%;
-  height: calc(100vh - 400px);
+  width: 1920px;
+  height: 1080px;
+  object-fit: contain;
 }
 
 .modalLeft, .modalRight{
@@ -152,12 +169,6 @@ header h4 {
 }
 
 @media only screen and (max-width: 1240px) {
-  .modalImageContainer {
-    position: relative;
-    margin: auto;
-    z-index: 2000 !important;
-    display: inline-block;
-  }
   .modalRight, .modalLeft { 
     width: 15%;
     height: 100%;
@@ -182,17 +193,28 @@ header h4 {
   }
 }
 
-@media only screen and (max-height: 1000px) {
-  .modalImage{
-    /* width: 100%; */
-    height: calc(100vh - 200px);
+@media only screen and (max-width: 640px) {
+
+  .modalDetails {
+    width: 100%;
+    right: -100%;
+  }
+
+  .modalDetails.showDetails {
+    width: 100%;
   }
 }
 
-@media only screen and (max-height: 484px) {
+/* @media only screen and (max-height: 1000px) {
   .modalImage{
-    /* width: 100%; */
-    /* width: calc(100vh - 5px); */
-    height: calc(100vh - 15px);
+    width: 100%;
+    height: auto;
   }
-}
+} */
+
+/* @media only screen and (max-height: 484px) {
+  .modalImage{
+    height: auto;
+    width: 100%;
+  }
+} */

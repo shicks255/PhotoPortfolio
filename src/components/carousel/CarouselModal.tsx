@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 
 import { IPhoto } from 'models/Photo';
 
-import { useClickOutsideMulti } from '../hooks/useClickOutside';
+import { useClickOutsideMulti } from '../../hooks/useClickOutside';
+import useIsMobile from '../../hooks/useIsMobile';
 import ModalPhotoDetails from './ModalPhotoDetails';
 
 interface IProps {
@@ -18,6 +19,9 @@ const CarouselModal: React.FC<IProps> = (props) => {
   const { closeModal, carouselLeft, carouselRight, modalPhoto } = props;
 
   const [showDetails, setShowDetails] = useState(false);
+  const isMobile = useIsMobile();
+
+  console.log(isMobile);
 
   useEffect(() => {
     if (!showDetails) {
@@ -52,10 +56,19 @@ const CarouselModal: React.FC<IProps> = (props) => {
     setShowDetails((curr) => !curr);
   };
 
+  let detailsClass = 'w-96';
+  if (isMobile) {
+    detailsClass = 'w-full';
+  }
+
   const div = (
     <div id={'myModal'} className={'myModal'}>
-      <div className={`flex justify-center h-full items-center ${showDetails ? 'mr-96' : ''}`}>
-        <div className="">
+      <div
+        className={`flex justify-center h-full items-center modalImageContainer ${
+          showDetails && !isMobile ? 'showDetails' : ''
+        }`}
+      >
+        <div className="flex-1">
           <img
             ref={modalRef}
             id={'modalImage'}
@@ -85,16 +98,19 @@ const CarouselModal: React.FC<IProps> = (props) => {
           </div>
         </div>
       </div>
-      {showDetails && (
-        <div ref={detailsRef} className="absolute right-0 top-0 h-screen w-96 bg-red-200 z-40">
-          <i
-            className={'fas fa-times-circle absolute top-10 left-10 cursor-pointer'}
-            onClick={togglePhotoInfo}
-            ref={exitButtonRef}
-          ></i>
-          <ModalPhotoDetails modalPhoto={modalPhoto} />
-        </div>
-      )}
+      <div
+        ref={detailsRef}
+        className={`absolute top-0 h-full modalDetails ${
+          showDetails ? 'showDetails' : ''
+        } bg-red-200 z-40 overflow-y-auto`}
+      >
+        <i
+          className={'fas fa-times-circle absolute top-5 left-5 cursor-pointer'}
+          onClick={togglePhotoInfo}
+          ref={exitButtonRef}
+        ></i>
+        <ModalPhotoDetails modalPhoto={modalPhoto} />
+      </div>
     </div>
   );
 

@@ -44,8 +44,8 @@ const ModalPhotoDetails: React.FC<IProps> = (props) => {
     }
 
     const tagList = modalPhoto.tags.map((tag, index) => (
-      <span className={'badge badge-pill badge-primary'} key={index}>
-        {` ${tag.name} ,`}
+      <span className={'bg-slate-500 rounded-full px-3 py-1 text-white'} key={index}>
+        {tag.name}
       </span>
     ));
 
