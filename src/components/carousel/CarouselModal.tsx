@@ -58,7 +58,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
     }
 
     setCarouselState(initialState);
-  }, []);
+  }, [centerPhoto.num, modalPhoto, photos]);
 
   useEffect(() => {
     if (!showDetails) {
