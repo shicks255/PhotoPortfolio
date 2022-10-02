@@ -99,6 +99,11 @@ const Body: React.FC = () => {
     }
   }, [modalPhoto, photosToDisplay]);
 
+  const closeModal = useCallback(() => {
+    setModalPhoto(undefined);
+    navigate('/');
+  }, [navigate]);
+
   useEffect(() => {
     document.addEventListener('keydown', (e) => {
       if (!e.repeat) {
@@ -130,16 +135,11 @@ const Body: React.FC = () => {
       // if (distanceY > 100 && distanceX < 100)
       //     this.closeModal();
     });
-  }, [carouselLeft, carouselRight, modalPhoto]);
+  }, [carouselLeft, carouselRight, closeModal, modalPhoto]);
 
   if (!data || isLoading) {
     return <div>LOADING</div>;
   }
-
-  const closeModal = () => {
-    setModalPhoto(undefined);
-    navigate('/');
-  };
 
   const doModal = (photo: IPhoto) => {
     setModalPhoto(photo);
