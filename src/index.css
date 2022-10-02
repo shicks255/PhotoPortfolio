@@ -81,18 +81,12 @@ header h4 {
   transition: margin-right 0.5s ease-in-out;
 }
 
+.mover {
+  transition: all 0.5s;
+}
+
 .modalImageContainer.showDetails {
   margin-right: 24em;
-}
-
-.modalDetails {
-  width: 24em;
-  transition: right 0.5s ease-in-out;
-  right: -24em;
-}
-
-.modalDetails.showDetails {
-  right: 0;
 }
 
 .modalImage{
@@ -193,15 +187,29 @@ header h4 {
   }
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (min-width: 641px) {
+  .modalDetails {
+    width: 24em;
+    transition: right 0.5s ease-in-out;
+    right: -24em;
+    top: 0;
+  }
 
+  .modalDetails.showDetails {
+    right: 0;
+  }
+}
+
+@media only screen and (max-width: 640px) {
   .modalDetails {
     width: 100%;
-    right: -100%;
+    transition: bottom 0.2s ease-in-out;
+    bottom: -100%;
   }
 
   .modalDetails.showDetails {
     width: 100%;
+    bottom: 0;
   }
 }
 

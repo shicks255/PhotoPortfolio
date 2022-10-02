@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import { usePhotos } from 'api';
 import { IPhoto } from 'models/Photo';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import CarouselModal from './carousel/CarouselModal';
 import FilterControls from './FilterControls';
@@ -36,6 +37,7 @@ const Body: React.FC = () => {
   const [tagFilters, setTagFilters] = useState<string[]>([]);
 
   const { data, isLoading } = usePhotos();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
@@ -136,10 +138,12 @@ const Body: React.FC = () => {
 
   const closeModal = () => {
     setModalPhoto(undefined);
+    navigate('/');
   };
 
   const doModal = (photo: IPhoto) => {
     setModalPhoto(photo);
+    navigate('/carousel');
   };
 
   const changeModalPhoto = (photo: IPhoto) => {
@@ -148,14 +152,22 @@ const Body: React.FC = () => {
 
   return (
     <div>
-      {modalPhoto && (
-        <CarouselModal
-          closeModal={closeModal}
-          carouselLeft={carouselLeft}
-          carouselRight={carouselRight}
-          modalPhoto={modalPhoto}
+      <Routes>
+        <Route
+          path="/carousel"
+          element={
+            <>
+              <CarouselModal
+                closeModal={closeModal}
+                carouselLeft={carouselLeft}
+                carouselRight={carouselRight}
+                modalPhoto={photosToDisplay[0]}
+                photos={photosToDisplay}
+              />
+            </>
+          }
         />
-      )}
+      </Routes>
 
       <FilterControls allTags={allTags} tags={tagFilters} setTags={setTagFilters} />
 

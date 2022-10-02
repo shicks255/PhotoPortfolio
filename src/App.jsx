@@ -1,12 +1,23 @@
 import React from 'react';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Body from './components/Body';
+import ErrorPage from './components/notFoundError';
+
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 
 function App() {
   const queryClient = new QueryClient();
+
+  const router = createBrowserRouter([
+    {
+      path: '*',
+      element: <Body />,
+      errorElement: <ErrorPage />
+    }
+  ]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -16,7 +27,7 @@ function App() {
         </header>
 
         <div className="p-1 lg:p-4 max-w-7xl m-auto penis">
-          <Body />
+          <RouterProvider router={router} />
         </div>
 
         <footer className={'p-12 bg-black font-bold text-violet-300 text-center'}>
