@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
 
 import { IPhoto } from 'models/Photo';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { useClickOutsideMulti } from '../../hooks/useClickOutside';
 import useIsMobile from '../../hooks/useIsMobile';
@@ -84,6 +85,8 @@ const CarouselModal: React.FC<IProps> = (props) => {
   const leftButton = useRef(null);
   const rightButton = useRef(null);
 
+  const navigate = useNavigate();
+
   useClickOutsideMulti(
     [modalRef, detailsRef, detailsButtonRef, backButtonRef, exitButtonRef, leftButton, rightButton],
     () => {
@@ -101,7 +104,6 @@ const CarouselModal: React.FC<IProps> = (props) => {
   }
 
   const [touchStart, setTouchStart] = useState(0);
-  const [touchMove, setTouchMove] = useState(0);
   const [mover, setMover] = useState('');
 
   useEffect(() => {
@@ -111,26 +113,6 @@ const CarouselModal: React.FC<IProps> = (props) => {
       }, 600);
     }
   }, [carouselState.rightAmount]);
-
-  const start = (e) => {
-    // setMover('mover');
-    setTouchStart(e.changedTouches[0].clientX);
-  };
-
-  const move = (e) => {
-    // setTouchMove(e.changedTouches[0].clientX);
-    // console.log(`Start ${touchStart}`);
-    // console.log(`Moved to ${e.changedTouches[0].clientX}`);
-    // console.log(`Setting right to ${Math.round(touchStart - e.changedTouches[0].clientX)}`);
-
-    const current = e.changedTouches[0].clientX;
-    setCarouselState((prev) => {
-      return {
-        ...prev,
-        rightAmount: Math.round(touchStart - current)
-      };
-    });
-  };
 
   const goLeft = () => {
     setCarouselState((prev) => ({
@@ -188,6 +170,20 @@ const CarouselModal: React.FC<IProps> = (props) => {
         };
       });
     }, 500);
+  };
+
+  const start = (e) => {
+    setTouchStart(e.changedTouches[0].clientX);
+  };
+
+  const move = (e) => {
+    const current = e.changedTouches[0].clientX;
+    setCarouselState((prev) => {
+      return {
+        ...prev,
+        rightAmount: Math.round(touchStart - current)
+      };
+    });
   };
 
   const end = (e) => {
@@ -317,7 +313,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
           onClick={togglePhotoInfo}
           ref={exitButtonRef}
         ></i>
-        {/* <ModalPhotoDetails modalPhoto={carouselState.centerPhoto} /> */}
+        <ModalPhotoDetails modalPhoto={carouselState.centerPhoto} />
       </div>
     </div>
   );

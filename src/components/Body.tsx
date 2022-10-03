@@ -101,7 +101,7 @@ const Body: React.FC = () => {
 
   const closeModal = useCallback(() => {
     setModalPhoto(undefined);
-    navigate('/');
+    navigate('/', { replace: true });
   }, [navigate]);
 
   useEffect(() => {
@@ -154,16 +154,18 @@ const Body: React.FC = () => {
     <div>
       <Routes>
         <Route
-          path="/carousel"
+          path="/carousel/*"
           element={
             <>
-              <CarouselModal
-                closeModal={closeModal}
-                carouselLeft={carouselLeft}
-                carouselRight={carouselRight}
-                modalPhoto={photosToDisplay[0]}
-                photos={photosToDisplay}
-              />
+              {modalPhoto && (
+                <CarouselModal
+                  closeModal={closeModal}
+                  carouselLeft={carouselLeft}
+                  carouselRight={carouselRight}
+                  modalPhoto={modalPhoto}
+                  photos={photosToDisplay}
+                />
+              )}
             </>
           }
         />
