@@ -118,11 +118,16 @@ const CarouselModal: React.FC<IProps> = (props) => {
   };
 
   const move = (e) => {
-    setTouchMove(e.changedTouches[0].clientX);
+    // setTouchMove(e.changedTouches[0].clientX);
+    // console.log(`Start ${touchStart}`);
+    // console.log(`Moved to ${e.changedTouches[0].clientX}`);
+    // console.log(`Setting right to ${Math.round(touchStart - e.changedTouches[0].clientX)}`);
+
+    const current = e.changedTouches[0].clientX;
     setCarouselState((prev) => {
       return {
         ...prev,
-        rightAmount: Math.round(touchStart - touchMove)
+        rightAmount: Math.round(touchStart - current)
       };
     });
   };
@@ -188,13 +193,14 @@ const CarouselModal: React.FC<IProps> = (props) => {
   const end = (e) => {
     //if we haven't gone past half the screen, set back to 0;
     setMover('mover');
-    const totalMoved = Math.abs(touchStart - touchMove);
+    const current = e.changedTouches[0].clientX;
+    const totalMoved = Math.abs(touchStart - current);
     const width = window.innerWidth;
     if (totalMoved < width / 2) {
       setCarouselState((prev) => ({ ...prev, rightAmount: 0 }));
     } else {
       //need to switch either left or right.
-      if (touchStart > touchMove && carouselState.rightPhoto) {
+      if (touchStart > current && carouselState.rightPhoto) {
         console.log('going right');
         goRight();
       } else {
@@ -311,7 +317,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
           onClick={togglePhotoInfo}
           ref={exitButtonRef}
         ></i>
-        <ModalPhotoDetails modalPhoto={carouselState.centerPhoto} />
+        {/* <ModalPhotoDetails modalPhoto={carouselState.centerPhoto} /> */}
       </div>
     </div>
   );
