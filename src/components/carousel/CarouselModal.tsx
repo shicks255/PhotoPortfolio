@@ -10,7 +10,7 @@ import useIsMobile from '../../hooks/useIsMobile';
 import ModalPhotoDetails from './ModalPhotoDetails';
 
 interface IProps {
-  closeModal: () => void;
+  closeModal: (currentPhoto) => void;
   carouselLeft: () => void;
   carouselRight: () => void;
   modalPhoto: IPhoto;
@@ -90,7 +90,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
   useClickOutsideMulti(
     [modalRef, detailsRef, detailsButtonRef, backButtonRef, exitButtonRef, leftButton, rightButton],
     () => {
-      closeModal();
+      closeModal(undefined);
     }
   );
 
@@ -105,6 +105,8 @@ const CarouselModal: React.FC<IProps> = (props) => {
 
   const [touchStart, setTouchStart] = useState(0);
   const [mover, setMover] = useState('');
+
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
 
   useEffect(() => {
     if (Math.abs(carouselState.rightAmount) < 1) {
@@ -267,14 +269,14 @@ const CarouselModal: React.FC<IProps> = (props) => {
             className={
               'absolute top-10 left-10 cursor-pointer px-4 py-2 rounded-full opacity-70 hover:bg-red-200'
             }
-            onClick={closeModal}
+            onClick={() => closeModal(carouselState.centerPhoto)}
           >
             <i className={'fas fa-arrow-left text-white'}></i>
           </div>
           <div className="absolute bottom-10 left-10 text-white">
             {carouselState.centerPhoto.num + 1} / {photos.length}
           </div>
-          {!isMobile && (
+          {!isTouch && (
             <>
               <div
                 ref={leftButton}

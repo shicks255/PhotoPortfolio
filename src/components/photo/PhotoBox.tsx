@@ -16,7 +16,7 @@ const PhotoBox: React.FC<IProps> = ({ photo, clickFunction }: IProps) => {
 
   return (
     <div key={photo.fileName} className="image-placeholder">
-      <div className={'relative'}>
+      <div className={'relative'} id={photo.fileName}>
         <img
           src={thumbnailSrc}
           className={`image-small ${smallLoaded ? 'loaded' : ''}`}

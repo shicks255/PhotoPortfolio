@@ -99,16 +99,21 @@ const Body: React.FC = () => {
     }
   }, [modalPhoto, photosToDisplay]);
 
-  const closeModal = useCallback(() => {
-    setModalPhoto(undefined);
-    navigate('/', { replace: true });
-  }, [navigate]);
+  const closeModal = useCallback(
+    (currentPhoto) => {
+      document.getElementById(currentPhoto.fileName)?.scrollIntoView();
+      setModalPhoto(undefined);
+      navigate('/', { replace: true });
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', (e) => {
+      console.log('testsetst');
       if (!e.repeat) {
         if (modalPhoto) {
-          if (e.keyCode === 27) closeModal();
+          if (e.keyCode === 27) closeModal(modalPhoto);
           if (e.keyCode === 37) carouselLeft();
           if (e.keyCode === 39) carouselRight();
         }
