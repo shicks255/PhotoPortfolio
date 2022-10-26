@@ -212,6 +212,9 @@ const CarouselModal: React.FC<IProps> = (props) => {
     return null;
   }
 
+  const canGoLeft = carouselState.centerPhoto.num > 0;
+  const canGoRight = carouselState.centerPhoto.num < photos.length - 1;
+
   const div = (
     <div id={'myModal'} className={'myModal'}>
       <div
@@ -278,28 +281,32 @@ const CarouselModal: React.FC<IProps> = (props) => {
           </div>
           {!isTouch && (
             <>
-              <div
-                ref={leftButton}
-                onClick={() => {
-                  setMover('mover');
-                  goLeft();
-                }}
-                className="absolute top-1/2 left-10 cursor-pointer rounded-full px-4 py-2 hover:bg-slate-500 hover:opacity-70"
-              >
-                <i className="fas fa-arrow-left text-white"></i>
-              </div>
-              <div
-                ref={rightButton}
-                onClick={() => {
-                  setMover('mover');
-                  goRight();
-                }}
-                className={`absolute top-1/2 ${
-                  showDetails ? 'right-[406px]' : 'right-10'
-                } cursor-pointer rounded-full px-4 py-2 hover:bg-slate-500 hover:opacity-70 mover`}
-              >
-                <i className="fas fa-arrow-right text-white"></i>
-              </div>
+              {canGoLeft && (
+                <div
+                  ref={leftButton}
+                  onClick={() => {
+                    setMover('mover');
+                    goLeft();
+                  }}
+                  className="absolute top-1/2 left-10 cursor-pointer rounded-full px-4 py-2 hover:bg-slate-500 hover:opacity-70"
+                >
+                  <i className="fas fa-arrow-left text-white"></i>
+                </div>
+              )}
+              {canGoRight && (
+                <div
+                  ref={rightButton}
+                  onClick={() => {
+                    setMover('mover');
+                    goRight();
+                  }}
+                  className={`absolute top-1/2 ${
+                    showDetails ? 'right-[406px]' : 'right-10'
+                  } cursor-pointer rounded-full px-4 py-2 hover:bg-slate-500 hover:opacity-70 mover`}
+                >
+                  <i className="fas fa-arrow-right text-white"></i>
+                </div>
+              )}
             </>
           )}
         </div>
