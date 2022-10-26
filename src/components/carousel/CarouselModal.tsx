@@ -257,7 +257,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
             <div
               ref={detailsButtonRef}
               className={
-                'absolute top-10 right-10 cursor-pointer px-4 py-2 rounded-full opacity-70 hover:bg-red-200'
+                'absolute top-10 right-10 cursor-pointer px-4 py-2 rounded-full hover:bg-slate-500 hover:opacity-70'
               }
               onClick={togglePhotoInfo}
             >
@@ -267,7 +267,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
           <div
             ref={backButtonRef}
             className={
-              'absolute top-10 left-10 cursor-pointer px-4 py-2 rounded-full opacity-70 hover:bg-red-200'
+              'absolute top-10 left-10 cursor-pointer px-4 py-2 rounded-full hover:bg-slate-500 hover:opacity-70'
             }
             onClick={() => closeModal(carouselState.centerPhoto)}
           >
@@ -308,7 +308,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
         ref={detailsRef}
         className={`absolute h-full modalDetails ${
           showDetails ? 'showDetails' : ''
-        } bg-red-200 z-40 overflow-y-auto`}
+        } bg-slate-100 z-40 overflow-y-auto`}
       >
         <i
           className={'fas fa-times-circle absolute top-5 left-5 cursor-pointer'}
