@@ -1,68 +1,91 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+﻿# PhotoPortfolio
 
-## Available Scripts
+A React photography portfolio with a photo gallery, filtering, and photo details with location maps. Built with React, TypeScript/JavaScript, Tailwind CSS, and Create React App (`react-scripts`).
 
-In the project directory, you can run:
+## Requirements
 
-### `npm start`
+- Node.js **24.21.0**, pinned in `.nvmrc`.
+- npm (included with Node.js).
+- Access to the hosted photo API described below.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## First-time setup
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Run these commands from the project root. If you use NVM, install the pinned version if needed, then activate it:
 
-### `npm test`
+```powershell
+nvm install 24.21.0
+nvm use 24.21.0
+node --version
+npm --version
+npm ci
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Use `npm ci` to install the dependencies recorded in `package-lock.json`. Commit intentional dependency changes together with the updated lockfile.
 
-### `npm run build`
+Start the development server:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```powershell
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Open http://localhost:3000. The page reloads when source files change. Stop the server with Ctrl+C.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The development command is `npm run dev`; this project does not define `npm start`.
 
-### `npm run eject`
+## Environment configuration
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For optional local configuration, copy `.env.example` to `.env.local` in the project root and edit the values. To enable Google Maps in photo details, supply your Maps key:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```dotenv
+REACT_APP_GOOGLE_MAP_API_KEY=your_google_maps_api_key
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Restart the development server after changing this file. `.env.local` is ignored by Git. Without a valid key, location maps will not work.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Frontend environment values are included in the browser bundle. Use a browser Maps key restricted to the intended sites; do not put server secrets in these variables.
 
-## Learn More
+## Photo backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Photo metadata and images share the base URL defined in `src/config.ts`. It defaults to `https://photosapi.shicks255.com`. The gallery requires the backend to be reachable and permit requests from the frontend's origin, including localhost during development.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You do not need to run a local PhotoService when using the hosted API. To use a local backend, start PhotoService and set this value in `.env.local`, then restart the development server:
 
-### Code Splitting
+```dotenv
+REACT_APP_API_BASE_URL=http://localhost:8585
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Use the backend base URL without the `/image` endpoint. Trailing slashes are removed automatically; a blank or unset value uses the hosted API. Although `package.json` declares a proxy at `http://localhost:8585`, absolute API URLs bypass it.
 
-### Analyzing the Bundle Size
+## Development commands
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local development server. |
+| `npm run build` | Create the production bundle in `build/`. |
+| `npm run lint` | Run the configured ESLint command. |
+| `npm run lint:fix` | Run ESLint with automatic fixes. |
+| `npm run lint:style` | Check CSS with Stylelint. |
+| `npm run format:check` | Check formatting without changing files. |
+| `npm run format` | Apply Prettier formatting to supported project files. |
 
-### Making a Progressive Web App
+EditorConfig and Prettier use two-space indentation and LF line endings. Git normalizes text files to LF, with CRLF reserved for Windows batch scripts. Formatting excludes generated output, dependencies, local environment files, IDE settings, and the lockfile. Existing files may need formatting; `format:check` reports these without modifying them.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Run `npm test` to start the Create React App test runner in watch mode, or `npm run test:ci` for a single run with coverage. Both use the Jest runner included with `react-scripts`; CRACO is not required. The existing test is a basic render smoke test.
 
-### Advanced Configuration
+## Production build and deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+```powershell
+npm run build
+```
 
-### Deployment
+The generated static files are written to `build/`. Supply production environment values before building; changing environment variables after deployment does not change an existing bundle.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Deploy the contents of `build/` to the static hosting location used for the site. Configure the host to serve `index.html` for frontend routes and ensure the photo API accepts the deployed site's origin. This repository does not currently define an automated deployment workflow.
 
-### `npm run build` fails to minify
+The legacy `copy`, `copyFiles`, and `copyStatic` scripts target `C:\IdeaProjects\PhotoService\src\main\resources\static\`. They require cleanup before use on another PC: the destination is machine-specific, and the scripts call `copyfiles` while the declared dependency is `copy-files`.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Windows troubleshooting
+
+- If `node --version` reports no active version, run `nvm use 24.21.0` and reopen the terminal if needed.
+- If PowerShell blocks `npm.ps1`, use `npm.cmd` for the commands above (for example, `npm.cmd ci`).
+- If NVM reports `NVM4306` after a trusted Node/npm installation or update, its suggested repair is `nvm reshim`. If the file change was unexpected, reinstall Node from a trusted source instead of accepting the changed file.

@@ -1,6 +1,8 @@
 import { IPhoto } from 'models/Photo';
 import { useQuery, QueryObserverResult } from 'react-query';
 
+import { API_BASE_URL } from './config';
+
 function fethc(endpoint: string) {
   return fetch(endpoint)
     .then((res) => Promise.all([res.ok, res.json()]))
@@ -20,11 +22,11 @@ function fethc(endpoint: string) {
 }
 
 function photosQuery(): Promise<IPhoto[]> {
-  return fethc('https://photosapi.shicks255.com/image');
+  return fethc(`${API_BASE_URL}/image`);
 }
 
 function photoQuery(name: string): Promise<IPhoto> {
-  return fethc(`https://photosapi.shicks255.com/image/${name}`);
+  return fethc(`${API_BASE_URL}/image/${name}`);
 }
 
 export function usePhotos(): QueryObserverResult<IPhoto[]> {

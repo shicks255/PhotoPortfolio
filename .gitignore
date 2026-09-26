@@ -21,5 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-./.idea/*
 /.env
+
+# Personal JetBrains settings; retain shared code styles and inspections.
+/.idea/*
+!/.idea/codeStyles/
+!/.idea/inspectionProfiles/
+*.iml

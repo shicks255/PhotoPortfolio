@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { IPhoto } from 'models/Photo';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
+import { API_BASE_URL } from '../../config';
 import { useClickOutsideMulti } from '../../hooks/useClickOutside';
 import useIsMobile from '../../hooks/useIsMobile';
 import ModalPhotoDetails from './ModalPhotoDetails';
@@ -235,7 +236,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
               id={'modalImage'}
               alt="pix"
               className={`modalImage absolute -top-[550px]`}
-              src={`https://photosapi.shicks255.com/image/${carouselState.centerPhoto.fileName}`}
+              src={`${API_BASE_URL}/image/${carouselState.centerPhoto.fileName}`}
             />
             {carouselState.leftPhoto && (
               <img
@@ -243,7 +244,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
                 alt="pixLeft"
                 style={{ left: `-${window.innerWidth + 22}px` }}
                 className={`modalImage absolute -top-[550px]`}
-                src={`https://photosapi.shicks255.com/image/${carouselState.leftPhoto.fileName}`}
+                src={`${API_BASE_URL}/image/${carouselState.leftPhoto.fileName}`}
               />
             )}
             {carouselState.rightPhoto && (
@@ -252,7 +253,7 @@ const CarouselModal: React.FC<IProps> = (props) => {
                 alt="pixLeft"
                 style={{ right: `-${window.innerWidth + 22}px` }}
                 className="modalImage absolute -top-[550px]"
-                src={`https://photosapi.shicks255.com/image/${carouselState.rightPhoto.fileName}`}
+                src={`${API_BASE_URL}/image/${carouselState.rightPhoto.fileName}`}
               />
             )}
           </div>

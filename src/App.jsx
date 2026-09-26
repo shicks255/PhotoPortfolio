@@ -7,6 +7,7 @@ import Body from './components/Body';
 import ErrorPage from './components/notFoundError';
 
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+import '@fortawesome/fontawesome-free/css/solid.min.css';
 
 function App() {
   const queryClient = new QueryClient();

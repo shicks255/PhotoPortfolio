@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 
 import { IPhoto } from 'models/Photo';
 
+import { API_BASE_URL } from '../../config';
+
 interface IProps {
   photo: IPhoto;
   clickFunction: (x: IPhoto) => void;
 }
 
 const PhotoBox: React.FC<IProps> = ({ photo, clickFunction }: IProps) => {
-  const thumbnailSrc = 'https://photosapi.shicks255.com/image/' + photo.fileName + '/thumbnail/';
-  const imageSrc = 'https://photosapi.shicks255.com/image/' + photo.fileName;
+  const thumbnailSrc = `${API_BASE_URL}/image/${photo.fileName}/thumbnail/`;
+  const imageSrc = `${API_BASE_URL}/image/${photo.fileName}`;
 
   const [smallLoaded, setSmallLoaded] = useState(false);
   const [largeLoaded, setLargeLoaded] = useState(false);
